@@ -1,96 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&family=Heebo:wght@300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Blueprint.AI core palette */
+    --ink: 20 15% 10%;
+    --paper: 38 38% 93%;
+    --warm-mid: 38 25% 87%;
+    --grid: 36 20% 76%;
+    --gold: 36 44% 50%;
+    --gold-light: 33 52% 62%;
+    --olive: 105 22% 29%;
+    --rust: 16 46% 37%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Semantic mapping */
+    --background: var(--paper);
+    --foreground: var(--ink);
+    --card: var(--paper);
+    --card-foreground: var(--ink);
+    --popover: var(--paper);
+    --popover-foreground: var(--ink);
+    --primary: var(--gold);
+    --primary-foreground: var(--ink);
+    --secondary: var(--warm-mid);
+    --secondary-foreground: var(--ink);
+    --muted: var(--warm-mid);
+    --muted-foreground: 20 15% 10% / 0.45;
+    --accent: var(--gold);
+    --accent-foreground: var(--ink);
+    --destructive: var(--rust);
+    --destructive-foreground: var(--paper);
+    --border: var(--grid);
+    --input: var(--grid);
+    --ring: var(--gold);
+    --radius: 0px;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Sidebar */
+    --sidebar-background: var(--ink);
+    --sidebar-foreground: var(--paper);
+    --sidebar-primary: var(--gold);
+    --sidebar-primary-foreground: var(--ink);
+    --sidebar-accent: 20 15% 15%;
+    --sidebar-accent-foreground: var(--paper);
+    --sidebar-border: 20 15% 15%;
+    --sidebar-ring: var(--gold);
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom tokens */
+    --font-display: 'Frank Ruhl Libre', serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'Heebo', sans-serif;
+    --text-muted-alpha: rgba(26, 23, 20, 0.45);
+    --text-body-alpha: rgba(26, 23, 20, 0.65);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: var(--ink);
+    --foreground: var(--paper);
+    --card: 20 15% 12%;
+    --card-foreground: var(--paper);
+    --popover: 20 15% 12%;
+    --popover-foreground: var(--paper);
+    --primary: var(--gold);
+    --primary-foreground: var(--ink);
+    --secondary: 20 15% 15%;
+    --secondary-foreground: var(--paper);
+    --muted: 20 15% 15%;
+    --muted-foreground: 38 38% 93% / 0.45;
+    --accent: var(--gold);
+    --accent-foreground: var(--ink);
+    --destructive: var(--rust);
+    --destructive-foreground: var(--paper);
+    --border: 20 15% 18%;
+    --input: 20 15% 18%;
+    --ring: var(--gold);
   }
 }
 
@@ -99,7 +84,71 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    font-weight: 300;
+  }
+}
+
+/* Blueprint utility classes */
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+  }
+
+  .text-muted-alpha {
+    color: var(--text-muted-alpha);
+  }
+
+  .text-body-alpha {
+    color: var(--text-body-alpha);
+  }
+
+  .gold-box {
+    background: hsl(38 30% 82%);
+    border-right: 4px solid hsl(var(--gold));
+    padding: 1.5rem 1.25rem;
+  }
+
+  .gold-box .box-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: hsl(var(--gold));
+    margin-bottom: 0.5rem;
+  }
+
+  .brief-box {
+    background: hsl(var(--ink));
+    color: hsl(var(--paper));
+    padding: 2.25rem 2.5rem;
+    border-right: 3px solid hsl(var(--gold));
+    position: relative;
+  }
+
+  .grid-gap-2px {
+    gap: 2px;
+    background: hsl(var(--grid));
   }
 }
