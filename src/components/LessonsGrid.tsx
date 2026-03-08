@@ -148,6 +148,15 @@ const lessons: Lesson[] = [
     tags: ["NotebookLM", "DNA", "Claude"],
     locked: false,
   },
+  {
+    id: 17,
+    number: "שיעור 17",
+    title: "ניהול ידע מעשי<br>AI לאדריכלים",
+    description: "ניהול ידע מעשי וארגון מידע אדריכלי עם AI.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Knowledge", "Management", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
