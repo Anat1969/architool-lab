@@ -98,7 +98,7 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
         <span className="h-px w-20 bg-grid block" />
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-[2px] bg-grid">
+      <div className="flex overflow-x-auto gap-[2px] bg-grid pb-4 scrollbar-thin">
         {lessons.map((lesson) => (
           <LessonCard
             key={lesson.id}
