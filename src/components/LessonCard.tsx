@@ -19,6 +19,18 @@ interface LessonCardProps {
 }
 
 const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
+  const [hasRecording, setHasRecording] = useState(false);
+
+  useEffect(() => {
+    const savedUrl = localStorage.getItem(`recording-url-${lesson.id}`);
+    if (savedUrl) {
+      setHasRecording(true);
+    } else {
+      const exercise = getExerciseData(lesson.id);
+      setHasRecording(!!exercise.recordingUrl && !exercise.recordingUrl.includes("example.com"));
+    }
+  }, [lesson.id]);
+
   const handleClick = () => {
     if (!lesson.locked) onClick(lesson.id);
   };
