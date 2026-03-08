@@ -63,9 +63,14 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
 
         {/* Title */}
         <h2
-          className={`text-[22px] font-bold leading-[1.2] mb-3 ${isActive ? "text-paper" : "text-foreground"}`}
+          className={`text-[22px] font-bold leading-[1.2] mb-2 ${isActive ? "text-paper" : "text-foreground"}`}
           dangerouslySetInnerHTML={{ __html: lesson.title }}
         />
+
+        {/* Description */}
+        <p className={`text-[13px] leading-[1.5] mb-3 ${isActive ? "text-paper/65" : "text-foreground/55"}`}>
+          {lesson.description}
+        </p>
 
         {/* Meta */}
         <div className="flex items-center gap-2">
