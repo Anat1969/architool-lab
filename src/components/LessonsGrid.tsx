@@ -139,6 +139,15 @@ const lessons: Lesson[] = [
     tags: ["Practice", "AI"],
     locked: false,
   },
+  {
+    id: 16,
+    number: "שיעור 16",
+    title: "DNA אדריכלי<br>עם NotebookLM",
+    description: "בניית DNA אדריכלי אישי עם NotebookLM ו-Claude.",
+    meta: "13 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "DNA", "Claude"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
