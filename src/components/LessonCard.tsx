@@ -43,7 +43,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         )}
 
         {/* Lesson number */}
-        <p className={`font-mono text-[22px] tracking-[0.15em] mb-3 font-black text-gold`}>
+        <p className={`text-[20px] tracking-[0.08em] mb-3 font-bold text-gold`}>
           {lesson.number}
         </p>
 
