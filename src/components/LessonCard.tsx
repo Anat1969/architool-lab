@@ -60,7 +60,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
 
         {/* Tags */}
         {lesson.tags.length > 0 && (
-          <div className="flex gap-1 mt-2 flex-wrap">
+          <div className="flex gap-1.5 mt-3 flex-wrap">
             {lesson.tags.map((tag) => (
               <span
                 key={tag}
