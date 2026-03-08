@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
 import { lesson02Slides } from "./Lesson02Slides";
+import { lesson03Slides } from "./Lesson03Slides";
 
 interface Slide {
   id: number;
