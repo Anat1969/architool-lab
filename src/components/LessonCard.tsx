@@ -1,6 +1,6 @@
 import { Lock, Play, Video } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getExercise } from "@/data/exerciseData";
+import { getExerciseData } from "@/data/exerciseData";
 
 interface Lesson {
   id: number;
