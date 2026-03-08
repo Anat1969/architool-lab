@@ -69,9 +69,16 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         )}
       </div>
 
-      {isActive && (
+      {!lesson.locked && (
         <button
-          className="absolute bottom-9 start-9 font-mono text-[10px] tracking-[0.2em] uppercase px-5 py-2.5 bg-gold text-ink border-none cursor-pointer animate-fade-in-up"
+          className={`
+            mt-6 font-mono text-[10px] tracking-[0.2em] uppercase bg-gold text-ink border-none cursor-pointer
+            transition-all duration-300 overflow-hidden
+            ${isActive
+              ? "px-5 py-2.5 max-h-12 opacity-100"
+              : "px-5 py-0 max-h-0 opacity-0 group-hover:py-2.5 group-hover:max-h-12 group-hover:opacity-100"
+            }
+          `}
           onClick={(e) => {
             e.stopPropagation();
             onClick(lesson.id);
