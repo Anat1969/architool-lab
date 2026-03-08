@@ -85,6 +85,15 @@ const lessons: Lesson[] = [
     tags: ["Templates", "Workflow"],
     locked: false,
   },
+  {
+    id: 10,
+    number: "שיעור 10",
+    title: "בניית נכסים דיגיטליים<br>עם AI",
+    description: "בניית נכסים דיגיטליים וכלי עבודה עם AI.",
+    meta: "13 שקפים · 45 דק׳",
+    tags: ["Assets", "Digital", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
