@@ -3,6 +3,7 @@ import { ChevronRight, ChevronLeft, X } from "lucide-react";
 import { lesson02Slides } from "./Lesson02Slides";
 import { lesson03Slides } from "./Lesson03Slides";
 import { lesson04Slides } from "./Lesson04Slides";
+import { lesson05Slides } from "./Lesson05Slides";
 import { lesson06Slides } from "./Lesson06Slides";
 import { lesson07Slides } from "./Lesson07Slides";
 import { lesson08Slides } from "./Lesson08Slides";
