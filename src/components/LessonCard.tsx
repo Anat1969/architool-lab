@@ -25,7 +25,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
     <div
       className={`
         relative overflow-hidden transition-all duration-200 cursor-pointer
-        min-w-[200px] w-[200px] flex-shrink-0 group
+        min-w-[260px] w-[260px] flex-shrink-0 group
         ${isActive
           ? "bg-ink text-paper shadow-lg scale-[1.03] z-10"
           : "bg-paper hover:bg-warm-mid"
@@ -37,34 +37,34 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       {/* Top accent bar */}
       <div className={`h-[3px] w-full ${isActive ? "bg-gold" : "bg-transparent group-hover:bg-gold/40"} transition-colors`} />
 
-      <div className="p-4 pb-3">
+      <div className="p-5 pb-4">
         {lesson.locked && (
           <Lock className="absolute top-4 start-4 w-3.5 h-3.5 opacity-30" />
         )}
 
         {/* Lesson number */}
-        <p className={`font-mono text-[18px] tracking-[0.2em] mb-2 font-black text-gold`}>
+        <p className={`font-mono text-[22px] tracking-[0.15em] mb-3 font-black text-gold`}>
           {lesson.number}
         </p>
 
         {/* Title */}
         <h2
-          className={`font-display text-[17px] font-bold leading-[1.2] mb-2 ${isActive ? "text-paper" : "text-foreground"}`}
+          className={`font-display text-[22px] font-bold leading-[1.2] mb-3 ${isActive ? "text-paper" : "text-foreground"}`}
           dangerouslySetInnerHTML={{ __html: lesson.title }}
         />
 
         {/* Meta */}
-        <span className={`font-mono text-[9px] tracking-[0.15em] ${isActive ? "text-paper/50" : "text-foreground/40"}`}>
+        <span className={`font-mono text-[13px] tracking-[0.1em] font-medium ${isActive ? "text-paper/60" : "text-foreground/50"}`}>
           {lesson.meta}
         </span>
 
         {/* Tags */}
         {lesson.tags.length > 0 && (
-          <div className="flex gap-1 mt-2 flex-wrap">
+          <div className="flex gap-1.5 mt-3 flex-wrap">
             {lesson.tags.map((tag) => (
               <span
                 key={tag}
-                className={`font-mono text-[8px] tracking-[0.1em] uppercase px-1.5 py-0.5 border ${
+                className={`font-mono text-[11px] tracking-[0.08em] uppercase px-2 py-1 border font-medium ${
                   isActive ? "border-paper/20 text-paper/50" : "border-grid text-foreground/40"
                 }`}
               >
@@ -79,11 +79,11 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       {!lesson.locked && (
         <button
           className={`
-            w-full font-mono text-[11px] tracking-[0.15em] uppercase cursor-pointer font-bold
+            w-full font-mono text-[14px] tracking-[0.1em] uppercase cursor-pointer font-bold
             flex items-center justify-center gap-2 transition-all duration-200
             ${isActive
-              ? "bg-gold text-ink py-2.5"
-              : "bg-gold/0 text-gold py-0 max-h-0 opacity-0 group-hover:bg-gold group-hover:text-ink group-hover:py-2.5 group-hover:max-h-12 group-hover:opacity-100 overflow-hidden"
+              ? "bg-gold text-ink py-3"
+              : "bg-gold/0 text-gold py-0 max-h-0 opacity-0 group-hover:bg-gold group-hover:text-ink group-hover:py-3 group-hover:max-h-14 group-hover:opacity-100 overflow-hidden"
             }
           `}
           onClick={(e) => {
@@ -91,7 +91,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             onClick(lesson.id);
           }}
         >
-          <Play className="w-3 h-3 fill-current" />
+          <Play className="w-4 h-4 fill-current" />
           פתח שיעור
         </button>
       )}
