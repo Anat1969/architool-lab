@@ -292,7 +292,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
           <button
             onClick={() => goTo(currentSlide + 1)}
             disabled={currentSlide === total - 1}
-            className="bg-gold border border-gold text-ink font-mono text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold/80 disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
+            className="bg-gold border border-gold text-ink text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold/80 disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
           >
             הבא <ChevronLeft className="w-4 h-4 inline ml-1" />
           </button>
