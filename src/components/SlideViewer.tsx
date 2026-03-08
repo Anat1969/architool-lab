@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
+import { lesson02Slides } from "./Lesson02Slides";
 
 interface Slide {
   id: number;
@@ -248,7 +249,7 @@ interface SlideViewerProps {
 
 const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = lessonId === 1 ? lesson01Slides : [];
+  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : [];
   const total = slides.length;
 
   const goTo = useCallback((index: number) => {
@@ -269,7 +270,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
       {/* Viewer topbar */}
       <div className="bg-black/80 px-6 md:px-12 py-3.5 flex justify-between items-center border-b border-white/[0.06] sticky top-[53px] z-[100]">
         <span className="font-mono text-[11px] tracking-[0.2em] text-white/50">
-          שיעור 01 — שליטה מוחלטת ב-AI
+          {lessonId === 1 ? "שיעור 01 — שליטה מוחלטת ב-AI" : `שיעור 0${lessonId} — ממשקים Revit API + AI`}
         </span>
         <div className="flex items-center gap-3">
           <button
@@ -303,7 +304,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
         <div className="w-full h-full p-[6%_7%] relative bg-paper flex flex-col">
           {slides[currentSlide].content}
           <span className="absolute bottom-[3%] start-[4%] font-mono text-[clamp(8px,0.8vw,10px)] text-foreground/20 tracking-[0.1em]">
-            BLUEPRINT.AI — שיעור 01
+            BLUEPRINT.AI — שיעור 0{lessonId}
           </span>
         </div>
       </div>
