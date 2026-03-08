@@ -43,18 +43,18 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         )}
 
         {/* Lesson number */}
-        <p className={`font-mono text-[22px] tracking-[0.15em] mb-3 font-black text-gold`}>
+        <p className={`text-[20px] tracking-[0.08em] mb-3 font-bold text-gold`}>
           {lesson.number}
         </p>
 
         {/* Title */}
         <h2
-          className={`font-display text-[22px] font-bold leading-[1.2] mb-3 ${isActive ? "text-paper" : "text-foreground"}`}
+          className={`text-[22px] font-bold leading-[1.2] mb-3 ${isActive ? "text-paper" : "text-foreground"}`}
           dangerouslySetInnerHTML={{ __html: lesson.title }}
         />
 
         {/* Meta */}
-        <span className={`font-mono text-[13px] tracking-[0.1em] font-medium ${isActive ? "text-paper/60" : "text-foreground/50"}`}>
+        <span className={`text-[13px] tracking-[0.05em] font-medium ${isActive ? "text-paper/60" : "text-foreground/55"}`}>
           {lesson.meta}
         </span>
 
@@ -64,8 +64,8 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             {lesson.tags.map((tag) => (
               <span
                 key={tag}
-                className={`font-mono text-[11px] tracking-[0.08em] uppercase px-2 py-1 border font-medium ${
-                  isActive ? "border-paper/20 text-paper/50" : "border-grid text-foreground/40"
+                className={`text-[11px] tracking-[0.06em] uppercase px-2 py-1 border font-semibold ${
+                  isActive ? "border-paper/20 text-paper/55" : "border-grid text-foreground/45"
                 }`}
               >
                 {tag}
@@ -79,7 +79,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       {!lesson.locked && (
         <button
           className={`
-            w-full font-mono text-[14px] tracking-[0.1em] uppercase cursor-pointer font-bold
+            w-full text-[14px] tracking-[0.08em] uppercase cursor-pointer font-bold
             flex items-center justify-center gap-2 transition-all duration-200
             ${isActive
               ? "bg-gold text-ink py-3"

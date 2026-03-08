@@ -95,12 +95,12 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
       <section className="px-6 md:px-12 py-10 bg-warm-mid border-t border-grid">
         <div className="flex items-start justify-between gap-6 mb-8 flex-wrap">
           <div>
-            <p className="label-mono text-gold mb-2">תרגיל — שיעור 0{lessonId}</p>
-            <h2 className="font-display text-[clamp(22px,3vw,32px)] font-bold leading-[1.1]">
+            <p className="label-mono text-gold mb-3">תרגיל — שיעור 0{lessonId}</p>
+            <h2 className="text-[clamp(24px,3.2vw,34px)] font-bold leading-[1.1]">
               בנה את הסטיינג האדריכלי שלך
             </h2>
           </div>
-          <p className="text-[13px] leading-[1.6] text-foreground/60 max-w-[360px]">
+          <p className="text-[14px] leading-[1.65] text-foreground/70 max-w-[380px]">
             השתמש בשלוש שכבות הפקדה — Settings, Project, Chat — כדי לבנות כלי עבודה אמיתי.
           </p>
         </div>
@@ -112,18 +112,18 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
             { num: "03", title: "בחן ותעד", desc: "שאל שאלה, צלם screenshot, תעד." },
           ].map((step) => (
             <div key={step.num} className="bg-paper p-5">
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-mono text-[10px] tracking-[0.2em] text-gold font-bold">{step.num}</span>
-                <h3 className="text-sm font-semibold">{step.title}</h3>
+              <div className="flex items-baseline gap-2 mb-1.5">
+                <span className="text-[12px] tracking-[0.15em] text-gold font-bold">{step.num}</span>
+                <h3 className="text-[15px] font-bold">{step.title}</h3>
               </div>
-              <p className="text-xs leading-[1.5] text-foreground/40">{step.desc}</p>
+              <p className="text-[13px] leading-[1.55] text-foreground/55">{step.desc}</p>
             </div>
           ))}
         </div>
 
         <div className="bg-paper border border-grid p-5">
           <div className="flex items-center gap-3 mb-4">
-            <p className="label-mono text-foreground/40">הגלריה — העלה עבודה</p>
+            <p className="label-mono text-foreground/50">הגלריה — העלה עבודה</p>
             <span className="h-px flex-1 bg-grid block" />
           </div>
 
@@ -181,13 +181,13 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
               <textarea
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
-                className="w-full bg-background border border-grid p-3 font-body text-sm text-foreground resize-none h-[80px] transition-colors focus:outline-none focus:border-gold placeholder:text-foreground/30"
+                className="w-full bg-background border border-grid p-3 text-[14px] text-foreground resize-none h-[80px] transition-colors focus:outline-none focus:border-gold placeholder:text-foreground/35"
                 placeholder="תאר בקצרה מה עשית..."
                 dir="rtl"
               />
               <button
                 onClick={handleSubmit}
-                className="self-start font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 bg-ink text-paper border-none cursor-pointer transition-all hover:bg-gold hover:text-ink flex items-center gap-2 font-bold"
+                className="self-start text-[12px] font-bold tracking-[0.1em] uppercase px-6 py-2.5 bg-ink text-paper border-none cursor-pointer transition-all hover:bg-gold hover:text-ink flex items-center gap-2"
               >
                 <Send className="w-3 h-3" />
                 הגש לגלריה
@@ -197,7 +197,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
 
           {/* Gallery Grid */}
           {gallery.length === 0 ? (
-            <div className="mt-4 p-6 text-center text-[11px] text-foreground/30 font-mono tracking-[0.1em] border-t border-grid">
+            <div className="mt-4 p-6 text-center text-[12px] text-foreground/35 tracking-[0.08em] border-t border-grid font-medium">
               עדיין אין עבודות — היה הראשון
             </div>
           ) : (
@@ -212,7 +212,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
                       onClick={() => setLightboxUrl(item.imageUrl!)}
                     />
                   ) : (
-                    <div className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center font-mono text-[9px] tracking-[0.2em] text-grid">
+                    <div className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center text-[10px] tracking-[0.15em] text-grid font-medium">
                       ללא תמונה
                     </div>
                   )}
@@ -251,7 +251,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
       )}
 
       {/* Toast */}
-      <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 bg-olive text-paper font-mono text-[11px] tracking-[0.15em] px-6 py-3 z-[999] transition-transform duration-300 ${showToast ? "translate-y-0" : "translate-y-20"}`}>
+      <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 bg-olive text-paper text-[12px] font-bold tracking-[0.1em] px-6 py-3 z-[999] transition-transform duration-300 ${showToast ? "translate-y-0" : "translate-y-20"}`}>
         העבודה הועלתה ✓
       </div>
     </>

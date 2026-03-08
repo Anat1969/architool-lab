@@ -50,12 +50,12 @@ const lesson01Slides: Slide[] = [
         <div className="flex-1 flex justify-center">
           <svg className="w-full max-w-[280px]" viewBox="0 0 300 400" fill="none">
             <polygon points="150,20 220,140 80,140" fill="hsl(38 25% 87%)" stroke="hsl(20 15% 10%)" strokeWidth="1.5"/>
-            <text x="150" y="95" textAnchor="middle" fontFamily="Heebo" fontSize="14" fill="hsl(20 15% 10%)">צ'אט</text>
+            <text x="150" y="95" textAnchor="middle" fontFamily="Rubik" fontSize="14" fill="hsl(20 15% 10%)">צ'אט</text>
             <line x1="0" y1="155" x2="300" y2="155" stroke="hsl(36 44% 50%)" strokeWidth="1"/>
             <polygon points="80,155 220,155 260,380 40,380" fill="hsl(36 44% 50%)" opacity="0.7"/>
-            <text x="150" y="260" textAnchor="middle" fontFamily="Frank Ruhl Libre" fontWeight="bold" fontSize="22" fill="white">70%</text>
-            <text x="150" y="285" textAnchor="middle" fontFamily="Heebo" fontSize="12" fill="rgba(255,255,255,0.8)">מהפוטנציאל</text>
-            <text x="150" y="302" textAnchor="middle" fontFamily="Heebo" fontSize="12" fill="rgba(255,255,255,0.8)">לא ממומש</text>
+            <text x="150" y="260" textAnchor="middle" fontFamily="Rubik" fontWeight="bold" fontSize="22" fill="white">70%</text>
+            <text x="150" y="285" textAnchor="middle" fontFamily="Rubik" fontSize="12" fill="rgba(255,255,255,0.8)">מהפוטנציאל</text>
+            <text x="150" y="302" textAnchor="middle" fontFamily="Rubik" fontSize="12" fill="rgba(255,255,255,0.8)">לא ממומש</text>
           </svg>
         </div>
       </div>
@@ -275,30 +275,30 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
     <div className="bg-[#111] border-t-[3px] border-gold" tabIndex={0} onKeyDown={handleKeyDown}>
       {/* Viewer topbar */}
       <div className="bg-black/80 px-6 md:px-12 py-4 flex justify-between items-center border-b border-white/[0.06] sticky top-[53px] z-[100]">
-        <span className="font-display text-[18px] font-bold tracking-wide text-white/90">
+        <span className="text-[18px] font-bold tracking-wide text-white/90">
           {lessonId === 1 ? "שיעור 01 — שליטה מוחלטת ב-AI" : lessonId === 6 ? "שיעור 06 — דיוק והשראה" : lessonId === 7 ? "שיעור 07 — מעבר לשאלה הנכונה" : lessonId === 8 ? "שיעור 08 — דפוסים עירוניים" : lessonId === 9 ? "שיעור 09 — תבניות ונכסים דיגיטליים" : `שיעור 0${lessonId}`}
         </span>
         <div className="flex items-center gap-4">
           <button
             onClick={() => goTo(currentSlide - 1)}
             disabled={currentSlide === 0}
-            className="bg-white/[0.1] border border-white/15 text-white font-mono text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold hover:text-ink hover:border-gold disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
+            className="bg-white/[0.1] border border-white/15 text-white text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold hover:text-ink hover:border-gold disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
           >
             <ChevronRight className="w-4 h-4 inline mr-1" /> הקודם
           </button>
-          <span className="font-mono text-[16px] font-bold text-white/60 min-w-[70px] text-center">
+          <span className="text-[16px] font-bold text-white/60 min-w-[70px] text-center">
             {currentSlide + 1} / {total}
           </span>
           <button
             onClick={() => goTo(currentSlide + 1)}
             disabled={currentSlide === total - 1}
-            className="bg-gold border border-gold text-ink font-mono text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold/80 disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
+            className="bg-gold border border-gold text-ink text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold/80 disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
           >
             הבא <ChevronLeft className="w-4 h-4 inline ml-1" />
           </button>
           <button
             onClick={onClose}
-            className="bg-transparent border border-white/20 text-white/70 font-mono text-[14px] font-bold tracking-[0.1em] px-4 py-2.5 cursor-pointer transition-all hover:text-white hover:border-white/50 hover:bg-white/10"
+            className="bg-transparent border border-white/20 text-white/70 text-[14px] font-bold tracking-[0.08em] px-4 py-2.5 cursor-pointer transition-all hover:text-white hover:border-white/50 hover:bg-white/10"
           >
             סגור <X className="w-4 h-4 inline" />
           </button>
@@ -309,7 +309,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
       <div className="w-full h-[calc(100vh-53px-56px-32px)] bg-paper flex items-center justify-center overflow-hidden relative">
         <div className="w-full h-full p-[6%_7%] relative bg-paper flex flex-col">
           {slides[currentSlide].content}
-          <span className="absolute bottom-[3%] start-[4%] font-mono text-[clamp(8px,0.8vw,10px)] text-foreground/20 tracking-[0.1em]">
+          <span className="absolute bottom-[3%] start-[4%] text-[clamp(8px,0.8vw,10px)] text-foreground/25 tracking-[0.08em] font-medium">
             BLUEPRINT.AI — שיעור 0{lessonId}
           </span>
         </div>
