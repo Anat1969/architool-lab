@@ -25,7 +25,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
     <div
       className={`
         bg-paper p-10 relative overflow-hidden transition-all duration-300 cursor-pointer
-        min-w-[280px] w-[280px] flex-shrink-0 group
+        min-w-[320px] w-[320px] flex-shrink-0 group
         ${isActive ? "!bg-ink !text-paper" : ""}
         ${lesson.locked ? "opacity-45 !cursor-default" : ""}
         ${!lesson.locked && !isActive ? "hover:bg-warm-mid" : ""}
@@ -36,21 +36,21 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         <Lock className="absolute top-9 start-9 w-4 h-4 opacity-30" />
       )}
 
-      <p className={`font-mono text-[10px] tracking-[0.3em] mb-5 ${isActive ? "text-gold" : "text-gold"}`}>
+      <p className={`font-mono text-[13px] tracking-[0.3em] mb-4 font-bold ${isActive ? "text-gold" : "text-gold"}`}>
         {lesson.number}
       </p>
 
       <h2
-        className="font-display text-[26px] font-bold leading-[1.15] mb-2.5"
+        className="font-display text-[32px] font-bold leading-[1.15] mb-3 text-foreground"
         dangerouslySetInnerHTML={{ __html: lesson.title }}
       />
 
-      <p className={`text-[13px] leading-[1.7] mb-6 ${isActive ? "opacity-60" : "text-muted-alpha"}`}>
+      <p className={`text-[15px] leading-[1.7] mb-6 ${isActive ? "text-paper/80" : "text-foreground/70"}`}>
         {lesson.description}
       </p>
 
       <div className="flex justify-between items-center">
-        <span className={`font-mono text-[10px] tracking-[0.15em] ${isActive ? "text-paper/40" : "text-muted-alpha"}`}>
+        <span className={`font-mono text-[12px] tracking-[0.15em] font-medium ${isActive ? "text-paper/60" : "text-foreground/50"}`}>
           {lesson.meta}
         </span>
         {lesson.tags.length > 0 && (
@@ -58,8 +58,8 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             {lesson.tags.map((tag) => (
               <span
                 key={tag}
-                className={`font-mono text-[9px] tracking-[0.15em] uppercase px-2 py-0.5 border ${
-                  isActive ? "border-paper/20 text-paper/50" : "border-grid text-muted-alpha"
+                className={`font-mono text-[11px] tracking-[0.15em] uppercase px-2.5 py-1 border font-medium ${
+                  isActive ? "border-paper/30 text-paper/70" : "border-grid text-foreground/60"
                 }`}
               >
                 {tag}
@@ -72,7 +72,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       {!lesson.locked && (
         <button
           className={`
-            mt-6 font-mono text-[10px] tracking-[0.2em] uppercase bg-gold text-ink border-none cursor-pointer
+            mt-6 font-mono text-[13px] tracking-[0.2em] uppercase bg-gold text-ink border-none cursor-pointer font-bold
             transition-all duration-300 overflow-hidden
             ${isActive
               ? "px-5 py-2.5 max-h-12 opacity-100"
