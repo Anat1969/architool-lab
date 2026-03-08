@@ -181,7 +181,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
               <textarea
                 value={caption}
                 onChange={(e) => setCaption(e.target.value)}
-                className="w-full bg-background border border-grid p-3 font-body text-sm text-foreground resize-none h-[80px] transition-colors focus:outline-none focus:border-gold placeholder:text-foreground/30"
+                className="w-full bg-background border border-grid p-3 text-[14px] text-foreground resize-none h-[80px] transition-colors focus:outline-none focus:border-gold placeholder:text-foreground/35"
                 placeholder="תאר בקצרה מה עשית..."
                 dir="rtl"
               />
