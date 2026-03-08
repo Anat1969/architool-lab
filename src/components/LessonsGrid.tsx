@@ -7,7 +7,7 @@ const lessons: Lesson[] = [
   {
     id: 1,
     number: "שיעור 01",
-    title: "שליטה מוחלטת ב-AI<br>שלוש רמות דיוק",
+    title: "שליטה מיטבית ב-AI<br>שלוש רמות דיוק",
     description: "רוב האנשים עובדים רק ברמת הצ'אט — ומפספסים 70% מהפוטנציאל.",
     meta: "14 שקפים · 40 דק׳",
     tags: ["Settings", "Project", "Chat"],
