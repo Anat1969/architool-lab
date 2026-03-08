@@ -34,7 +34,7 @@ const lessons: Lesson[] = [
     number: "שיעור 04",
     title: "ארכיטקטורת ידע<br>טיפולוגיות",
     description: "איך לבנות ארכיטקטורת ידע עם AI — טיפולוגיות, מכולות, שלדים ומערכות.",
-    meta: "15 שקפים · 45 דק׳ · חלק א׳",
+    meta: "30 שקפים · 90 דק׳",
     tags: ["NotebookLM", "Typologies", "Knowledge"],
     locked: false,
   },
