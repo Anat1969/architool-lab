@@ -18,6 +18,9 @@ const pages = [
   page8, page9, page10, page11, page12, page13, page14,
 ];
 
+// Slides 2-14 are mirrored from the PDF extraction
+const mirroredSlides = new Set([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+
 export const lesson06Slides = pages.map((src, i) => ({
   id: i + 1,
   content: (
@@ -26,6 +29,7 @@ export const lesson06Slides = pages.map((src, i) => ({
         src={src}
         alt={`שקף ${i + 1}`}
         className="max-w-full max-h-full block"
+        style={mirroredSlides.has(i + 1) ? { transform: "scaleX(-1)" } : undefined}
       />
     </div>
   ),
