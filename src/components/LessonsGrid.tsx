@@ -166,6 +166,15 @@ const lessons: Lesson[] = [
     tags: ["Workshop", "DNA", "AI"],
     locked: false,
   },
+  {
+    id: 19,
+    number: "שיעור 19",
+    title: "ניתוח מרחבי<br>AI וגיאוגרפיה",
+    description: "ניתוח מרחבי וגיאוגרפי עם כלי AI לאדריכלים.",
+    meta: "18 שקפים · 45 דק׳",
+    tags: ["Spatial", "GIS", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
