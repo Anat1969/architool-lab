@@ -187,7 +187,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
               />
               <button
                 onClick={handleSubmit}
-                className="self-start font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-2.5 bg-ink text-paper border-none cursor-pointer transition-all hover:bg-gold hover:text-ink flex items-center gap-2 font-bold"
+                className="self-start text-[12px] font-bold tracking-[0.1em] uppercase px-6 py-2.5 bg-ink text-paper border-none cursor-pointer transition-all hover:bg-gold hover:text-ink flex items-center gap-2"
               >
                 <Send className="w-3 h-3" />
                 הגש לגלריה

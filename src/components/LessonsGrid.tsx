@@ -137,7 +137,7 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="חפש שיעור..."
-              className="bg-warm-mid border border-grid text-foreground font-body text-[14px] pr-9 pl-8 py-2 w-[220px] focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 placeholder:text-foreground/30 transition-colors"
+              className="bg-warm-mid border border-grid text-foreground text-[14px] pr-9 pl-8 py-2 w-[220px] focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 placeholder:text-foreground/35 transition-colors"
             />
             {searchQuery && (
               <button
