@@ -91,7 +91,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             onClick(lesson.id);
           }}
         >
-          <Play className="w-3 h-3 fill-current" />
+          <Play className="w-4 h-4 fill-current" />
           פתח שיעור
         </button>
       )}
