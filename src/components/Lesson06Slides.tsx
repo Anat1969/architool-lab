@@ -18,11 +18,30 @@ const pages = [
   page8, page9, page10, page11, page12, page13, page14,
 ];
 
+// Slides 2-14 are mirrored from the source PDF extraction
+const mirroredSlides = new Set([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+
 export const lesson06Slides = pages.map((src, i) => ({
   id: i + 1,
   content: (
-    <div className="w-full h-full flex items-center justify-center">
-      <img src={src} alt={`שקף ${i + 1}`} className="w-full h-full object-contain" />
+    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
+      <img
+        src={src}
+        alt={`שקף ${i + 1}`}
+        className="w-full h-full object-contain"
+        style={mirroredSlides.has(i + 1) ? { transform: "scaleX(-1)" } : undefined}
+      />
+      {/* Cover NotebookLM logo */}
+      <div
+        className="absolute"
+        style={{
+          bottom: "2%",
+          left: "2%",
+          width: "120px",
+          height: "28px",
+          backgroundColor: "hsl(38 38% 93%)",
+        }}
+      />
     </div>
   ),
 }));
