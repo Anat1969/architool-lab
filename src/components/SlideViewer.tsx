@@ -286,7 +286,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
           >
             <ChevronRight className="w-4 h-4 inline mr-1" /> הקודם
           </button>
-          <span className="font-mono text-[16px] font-bold text-white/60 min-w-[70px] text-center">
+          <span className="text-[16px] font-bold text-white/60 min-w-[70px] text-center">
             {currentSlide + 1} / {total}
           </span>
           <button
