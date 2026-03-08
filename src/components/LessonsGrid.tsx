@@ -74,6 +74,15 @@ const lessons: Lesson[] = [
     tags: ["Urban", "Patterns", "Analysis"],
     locked: false,
   },
+  {
+    id: 9,
+    number: "שיעור 09",
+    title: "תבניות ונכסים דיגיטליים<br>AI Templates",
+    description: "בניית תבניות ונכסים דיגיטליים — איך ליצור Templates חכמים עם AI.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Templates", "Assets", "Workflow"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
