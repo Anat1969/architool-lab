@@ -47,6 +47,34 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
   const [showExample, setShowExample] = useState(false);
   const [showFaq, setShowFaq] = useState(false);
 
+  // Recording URL editing
+  const [recordingUrl, setRecordingUrl] = useState<string>("");
+  const [isEditingRecording, setIsEditingRecording] = useState(false);
+  const [tempRecordingUrl, setTempRecordingUrl] = useState("");
+
+  useEffect(() => {
+    const saved = localStorage.getItem(`recording-url-${lessonId}`);
+    setRecordingUrl(saved || "");
+    setIsEditingRecording(false);
+  }, [lessonId]);
+
+  const saveRecordingUrl = () => {
+    const url = tempRecordingUrl.trim();
+    if (url) {
+      localStorage.setItem(`recording-url-${lessonId}`, url);
+      setRecordingUrl(url);
+    } else {
+      localStorage.removeItem(`recording-url-${lessonId}`);
+      setRecordingUrl("");
+    }
+    setIsEditingRecording(false);
+  };
+
+  const startEditingRecording = () => {
+    setTempRecordingUrl(recordingUrl || exercise.recordingUrl || "");
+    setIsEditingRecording(true);
+  };
+
   const processFile = useCallback((file: File) => {
     if (!file.type.startsWith("image/")) return;
     setSelectedFile(file);
@@ -203,18 +231,62 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
         </div>
 
         {/* Resources bar: recording, example, links */}
-        <div className="flex flex-wrap gap-3 mb-8">
-          {exercise.recordingUrl && (
-            <a
-              href={exercise.recordingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 bg-ink text-paper px-5 py-2.5 text-[14px] font-bold hover:bg-gold hover:text-ink transition-colors"
+        <div className="flex flex-wrap gap-3 mb-8 items-center">
+          {/* Recording URL - editable */}
+          {isEditingRecording ? (
+            <div className="flex items-center gap-2 bg-paper border border-gold p-1.5 pr-3">
+              <Play className="w-4 h-4 text-gold flex-shrink-0" />
+              <input
+                value={tempRecordingUrl}
+                onChange={(e) => setTempRecordingUrl(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && saveRecordingUrl()}
+                placeholder="הדבק קישור להקלטה..."
+                className="bg-transparent border-none text-[14px] text-foreground focus:outline-none min-w-[220px] placeholder:text-foreground/35"
+                autoFocus
+                dir="ltr"
+              />
+              <button
+                onClick={saveRecordingUrl}
+                className="text-[13px] font-bold bg-gold text-ink px-3 py-1.5 hover:bg-gold/80 transition-colors"
+              >
+                שמור
+              </button>
+              <button
+                onClick={() => setIsEditingRecording(false)}
+                className="text-[13px] font-bold text-foreground/50 px-2 py-1.5 hover:text-foreground transition-colors"
+              >
+                ביטול
+              </button>
+            </div>
+          ) : (recordingUrl || exercise.recordingUrl) ? (
+            <div className="flex items-center gap-1">
+              <a
+                href={recordingUrl || exercise.recordingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-ink text-paper px-5 py-2.5 text-[14px] font-bold hover:bg-gold hover:text-ink transition-colors"
+              >
+                <Play className="w-4 h-4" />
+                צפה בהקלטת ההרצאה
+              </a>
+              <button
+                onClick={startEditingRecording}
+                className="p-2.5 text-foreground/40 hover:text-gold transition-colors"
+                title="ערוך קישור"
+              >
+                <Pencil className="w-4 h-4" />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={startEditingRecording}
+              className="flex items-center gap-2 bg-paper border border-dashed border-gold/40 text-foreground/60 px-5 py-2.5 text-[14px] font-bold hover:border-gold hover:text-foreground transition-colors"
             >
-              <Play className="w-4 h-4" />
-              צפה בהקלטת ההרצאה
-            </a>
+              <Pencil className="w-4 h-4 text-gold" />
+              הוסף קישור להקלטה
+            </button>
           )}
+
           {exercise.exampleSolution && (
             <button
               onClick={() => setShowExample(!showExample)}
