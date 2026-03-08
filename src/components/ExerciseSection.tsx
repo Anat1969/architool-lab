@@ -197,7 +197,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
 
           {/* Gallery Grid */}
           {gallery.length === 0 ? (
-            <div className="mt-4 p-6 text-center text-[11px] text-foreground/30 font-mono tracking-[0.1em] border-t border-grid">
+            <div className="mt-4 p-6 text-center text-[12px] text-foreground/35 tracking-[0.08em] border-t border-grid font-medium">
               עדיין אין עבודות — היה הראשון
             </div>
           ) : (
