@@ -270,7 +270,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
       {/* Viewer topbar */}
       <div className="bg-black/80 px-6 md:px-12 py-3.5 flex justify-between items-center border-b border-white/[0.06] sticky top-[53px] z-[100]">
         <span className="font-mono text-[11px] tracking-[0.2em] text-white/50">
-          שיעור 01 — שליטה מוחלטת ב-AI
+          {lessonId === 1 ? "שיעור 01 — שליטה מוחלטת ב-AI" : `שיעור 0${lessonId} — ממשקים Revit API + AI`}
         </span>
         <div className="flex items-center gap-3">
           <button
