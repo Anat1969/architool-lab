@@ -26,6 +26,7 @@ export const lesson06Slides = pages.map((src, i) => ({
         src={src}
         alt={`שקף ${i + 1}`}
         className="max-w-full max-h-full block"
+        style={i >= 1 ? { transform: "scaleX(-1)" } : undefined}
       />
     </div>
   ),
