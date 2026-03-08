@@ -1,4 +1,6 @@
-import { Lock, Play } from "lucide-react";
+import { Lock, Play, Video } from "lucide-react";
+import { useState, useEffect } from "react";
+import { getExerciseData } from "@/data/exerciseData";
 
 interface Lesson {
   id: number;
@@ -17,6 +19,18 @@ interface LessonCardProps {
 }
 
 const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
+  const [hasRecording, setHasRecording] = useState(false);
+
+  useEffect(() => {
+    const savedUrl = localStorage.getItem(`recording-url-${lesson.id}`);
+    if (savedUrl) {
+      setHasRecording(true);
+    } else {
+      const exercise = getExerciseData(lesson.id);
+      setHasRecording(!!exercise.recordingUrl && !exercise.recordingUrl.includes("example.com"));
+    }
+  }, [lesson.id]);
+
   const handleClick = () => {
     if (!lesson.locked) onClick(lesson.id);
   };
@@ -54,9 +68,14 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         />
 
         {/* Meta */}
-        <span className={`text-[13px] tracking-[0.05em] font-medium ${isActive ? "text-paper/60" : "text-foreground/55"}`}>
-          {lesson.meta}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className={`text-[13px] tracking-[0.05em] font-medium ${isActive ? "text-paper/60" : "text-foreground/55"}`}>
+            {lesson.meta}
+          </span>
+          {hasRecording && (
+            <Video className={`w-3.5 h-3.5 ${isActive ? "text-gold" : "text-gold/70"}`} />
+          )}
+        </div>
 
         {/* Tags */}
         {lesson.tags.length > 0 && (
