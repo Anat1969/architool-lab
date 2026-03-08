@@ -107,7 +107,7 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
   return (
     <section className="px-6 md:px-12 py-6">
       <div className="flex items-center justify-between mb-4">
-        <p className="label-mono text-muted-alpha flex items-center gap-3">
+        <p className="font-display text-[16px] font-bold text-foreground/70 flex items-center gap-3">
           בחר שיעור
           <span className="h-px w-12 bg-grid block" />
         </p>
