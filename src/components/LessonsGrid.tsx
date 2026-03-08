@@ -65,6 +65,15 @@ const lessons: Lesson[] = [
     tags: ["Thinking", "Questions", "AI"],
     locked: false,
   },
+  {
+    id: 8,
+    number: "שיעור 08",
+    title: "דפוסים עירוניים<br>ניתוח עם AI",
+    description: "חשיפת דפוסים עירוניים — איך לנתח מרקמים עירוניים בעזרת AI.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Urban", "Patterns", "Analysis"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
