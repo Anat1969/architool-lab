@@ -121,6 +121,15 @@ const lessons: Lesson[] = [
     tags: ["Summary", "Future"],
     locked: false,
   },
+  {
+    id: 14,
+    number: "שיעור 14",
+    title: "NotebookLM<br>מעשי לאדריכלים",
+    description: "יישום מעשי של NotebookLM בעבודה אדריכלית.",
+    meta: "14 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Practical"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
