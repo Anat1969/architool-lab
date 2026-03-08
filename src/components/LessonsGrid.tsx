@@ -157,6 +157,15 @@ const lessons: Lesson[] = [
     tags: ["Knowledge", "Management", "AI"],
     locked: false,
   },
+  {
+    id: 18,
+    number: "שיעור 18",
+    title: "סדנת DNA אדריכלי<br>יישום מעשי",
+    description: "סדנה מעשית ליישום DNA אדריכלי עם כלי AI.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Workshop", "DNA", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
