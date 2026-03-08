@@ -8,6 +8,7 @@ import { lesson07Slides } from "./Lesson07Slides";
 import { lesson08Slides } from "./Lesson08Slides";
 import { lesson09Slides } from "./Lesson09Slides";
 import { lesson10Slides } from "./Lesson10Slides";
+import { lesson11Slides } from "./Lesson11Slides";
 import { lesson12Slides } from "./Lesson12Slides";
 import { lesson13Slides } from "./Lesson13Slides";
 import { lesson14Slides } from "./Lesson14Slides";
@@ -269,7 +270,7 @@ interface SlideViewerProps {
 
 const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : lessonId === 3 ? lesson03Slides : lessonId === 4 ? lesson04Slides : lessonId === 6 ? lesson06Slides : lessonId === 7 ? lesson07Slides : lessonId === 8 ? lesson08Slides : lessonId === 9 ? lesson09Slides : lessonId === 10 ? lesson10Slides : lessonId === 12 ? lesson12Slides : lessonId === 13 ? lesson13Slides : lessonId === 14 ? lesson14Slides : lessonId === 15 ? lesson15Slides : lessonId === 16 ? lesson16Slides : lessonId === 17 ? lesson17Slides : lessonId === 18 ? lesson18Slides : lessonId === 19 ? lesson19Slides : lessonId === 20 ? lesson20Slides : lessonId === 21 ? lesson21Slides : lessonId === 22 ? lesson22Slides : lessonId === 23 ? lesson23Slides : lessonId === 30 ? lesson30Slides : [];
+  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : lessonId === 3 ? lesson03Slides : lessonId === 4 ? lesson04Slides : lessonId === 6 ? lesson06Slides : lessonId === 7 ? lesson07Slides : lessonId === 8 ? lesson08Slides : lessonId === 9 ? lesson09Slides : lessonId === 10 ? lesson10Slides : lessonId === 11 ? lesson11Slides : lessonId === 12 ? lesson12Slides : lessonId === 13 ? lesson13Slides : lessonId === 14 ? lesson14Slides : lessonId === 15 ? lesson15Slides : lessonId === 16 ? lesson16Slides : lessonId === 17 ? lesson17Slides : lessonId === 18 ? lesson18Slides : lessonId === 19 ? lesson19Slides : lessonId === 20 ? lesson20Slides : lessonId === 21 ? lesson21Slides : lessonId === 22 ? lesson22Slides : lessonId === 23 ? lesson23Slides : lessonId === 30 ? lesson30Slides : [];
   const total = slides.length;
 
   const goTo = useCallback((index: number) => {

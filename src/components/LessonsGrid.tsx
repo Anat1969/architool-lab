@@ -97,11 +97,11 @@ const lessons: Lesson[] = [
   {
     id: 11,
     number: "שיעור 11",
-    title: "בקרוב",
-    description: "שיעור זה יפורסם בקרוב.",
-    meta: "—",
-    tags: [],
-    locked: true,
+    title: "תהליך מקצועי עם AI<br>מבנה ופרמטרים",
+    description: "בניית תהליך עבודה מקצועי עם AI — הפרדה בין מבנה לפרמטרים.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Workflow", "AI", "Parameters"],
+    locked: false,
   },
   {
     id: 12,
