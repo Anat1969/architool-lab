@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Upload, Send, X, Clipboard, UserPlus, User } from "lucide-react";
+import { Upload, Send, X, Clipboard, UserPlus, User, Pencil } from "lucide-react";
 
 interface ExerciseSectionProps {
   lessonId: number;
@@ -29,6 +29,11 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
   const [newStudentName, setNewStudentName] = useState("");
   const [selectedStudentId, setSelectedStudentId] = useState<number | null>(null);
   const [activeStudentFilter, setActiveStudentFilter] = useState<number | null>(null);
+  const [editingItemId, setEditingItemId] = useState<number | null>(null);
+  const [editCaption, setEditCaption] = useState("");
+  const [editPreviewUrl, setEditPreviewUrl] = useState<string | null>(null);
+  const [editFile, setEditFile] = useState<File | null>(null);
+  const editFileInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
 
@@ -111,6 +116,44 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
 
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2800);
+  };
+
+  const startEditing = (item: GalleryItem) => {
+    setEditingItemId(item.id);
+    setEditCaption(item.caption);
+    setEditPreviewUrl(item.imageUrl || null);
+    setEditFile(null);
+  };
+
+  const handleEditFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !file.type.startsWith("image/")) return;
+    setEditFile(file);
+    const reader = new FileReader();
+    reader.onload = (ev) => setEditPreviewUrl(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  };
+
+  const saveEdit = () => {
+    if (editingItemId === null) return;
+    setGallery((prev) =>
+      prev.map((item) =>
+        item.id === editingItemId
+          ? { ...item, caption: editCaption, imageUrl: editPreviewUrl || item.imageUrl }
+          : item
+      )
+    );
+    setEditingItemId(null);
+    setEditCaption("");
+    setEditPreviewUrl(null);
+    setEditFile(null);
+  };
+
+  const cancelEdit = () => {
+    setEditingItemId(null);
+    setEditCaption("");
+    setEditPreviewUrl(null);
+    setEditFile(null);
   };
 
   const filteredGallery = activeStudentFilter
@@ -327,27 +370,91 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
           ) : (
             <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-[2px] bg-grid mt-4">
               {filteredGallery.map((item) => (
-                <div key={item.id} className="bg-paper overflow-hidden">
-                  {item.imageUrl ? (
-                    <img
-                      src={item.imageUrl}
-                      alt=""
-                      className="w-full aspect-[4/3] object-cover block cursor-pointer hover:opacity-90 transition-opacity"
-                      onClick={() => setLightboxUrl(item.imageUrl!)}
-                    />
+                <div key={item.id} className="bg-paper overflow-hidden relative group">
+                  {editingItemId === item.id ? (
+                    /* Edit Mode */
+                    <div className="p-3 flex flex-col gap-3">
+                      <input
+                        ref={editFileInputRef}
+                        type="file"
+                        accept="image/*"
+                        onChange={handleEditFileChange}
+                        className="hidden"
+                      />
+                      {editPreviewUrl ? (
+                        <div className="relative">
+                          <img
+                            src={editPreviewUrl}
+                            alt=""
+                            className="w-full aspect-[4/3] object-cover block"
+                          />
+                          <button
+                            onClick={() => editFileInputRef.current?.click()}
+                            className="absolute bottom-2 right-2 bg-ink/70 text-paper text-[10px] font-bold px-2 py-1 flex items-center gap-1 hover:bg-ink transition-colors"
+                          >
+                            <Pencil className="w-3 h-3" />
+                            החלף
+                          </button>
+                        </div>
+                      ) : (
+                        <div
+                          className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center cursor-pointer hover:bg-gold/10 transition-colors border border-dashed border-grid"
+                          onClick={() => editFileInputRef.current?.click()}
+                        >
+                          <Upload className="w-4 h-4 text-foreground/30" />
+                        </div>
+                      )}
+                      <textarea
+                        value={editCaption}
+                        onChange={(e) => setEditCaption(e.target.value)}
+                        className="w-full bg-background border border-grid p-2 text-[13px] text-foreground resize-none h-[60px] focus:outline-none focus:border-gold"
+                        dir="rtl"
+                        placeholder="תיאור..."
+                      />
+                      <div className="flex gap-2">
+                        <button
+                          onClick={saveEdit}
+                          className="text-[11px] font-bold px-3 py-1.5 bg-ink text-paper hover:bg-gold hover:text-ink transition-colors flex-1"
+                        >
+                          שמור
+                        </button>
+                        <button
+                          onClick={cancelEdit}
+                          className="text-[11px] font-bold px-3 py-1.5 bg-transparent border border-grid text-foreground/60 hover:border-foreground/40 transition-colors flex-1"
+                        >
+                          ביטול
+                        </button>
+                      </div>
+                    </div>
                   ) : (
-                    <div className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center text-[10px] tracking-[0.15em] text-grid font-medium">
-                      ללא תמונה
-                    </div>
+                    /* View Mode */
+                    <>
+                      <div className="relative cursor-pointer" onClick={() => startEditing(item)}>
+                        {item.imageUrl ? (
+                          <img
+                            src={item.imageUrl}
+                            alt=""
+                            className="w-full aspect-[4/3] object-cover block hover:opacity-90 transition-opacity"
+                          />
+                        ) : (
+                          <div className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center text-[10px] tracking-[0.15em] text-grid font-medium">
+                            ללא תמונה
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors flex items-center justify-center">
+                          <Pencil className="w-5 h-5 text-paper opacity-0 group-hover:opacity-90 transition-opacity drop-shadow-md" />
+                        </div>
+                      </div>
+                      <div className="p-2.5 text-[11px] leading-[1.4] text-foreground/60 cursor-pointer" onClick={() => startEditing(item)}>
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <User className="w-3 h-3 text-gold" />
+                          <strong className="text-[12px] font-bold text-foreground">{item.studentName}</strong>
+                          <span className="text-[10px] text-foreground/40 mr-auto">{item.date}</span>
+                        </div>
+                        {item.caption && <p>{item.caption}</p>}
+                      </div>
+                    </>
                   )}
-                  <div className="p-2.5 text-[11px] leading-[1.4] text-foreground/60">
-                    <div className="flex items-center gap-1.5 mb-1">
-                      <User className="w-3 h-3 text-gold" />
-                      <strong className="text-[12px] font-bold text-foreground">{item.studentName}</strong>
-                      <span className="text-[10px] text-foreground/40 mr-auto">{item.date}</span>
-                    </div>
-                    {item.caption && <p>{item.caption}</p>}
-                  </div>
                 </div>
               ))}
             </div>
