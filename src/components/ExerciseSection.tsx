@@ -212,7 +212,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
                       onClick={() => setLightboxUrl(item.imageUrl!)}
                     />
                   ) : (
-                    <div className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center font-mono text-[9px] tracking-[0.2em] text-grid">
+                    <div className="w-full aspect-[4/3] bg-warm-mid flex items-center justify-center text-[10px] tracking-[0.15em] text-grid font-medium">
                       ללא תמונה
                     </div>
                   )}
