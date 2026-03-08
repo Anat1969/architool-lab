@@ -50,12 +50,12 @@ const lesson01Slides: Slide[] = [
         <div className="flex-1 flex justify-center">
           <svg className="w-full max-w-[280px]" viewBox="0 0 300 400" fill="none">
             <polygon points="150,20 220,140 80,140" fill="hsl(38 25% 87%)" stroke="hsl(20 15% 10%)" strokeWidth="1.5"/>
-            <text x="150" y="95" textAnchor="middle" fontFamily="Heebo" fontSize="14" fill="hsl(20 15% 10%)">צ'אט</text>
+            <text x="150" y="95" textAnchor="middle" fontFamily="Rubik" fontSize="14" fill="hsl(20 15% 10%)">צ'אט</text>
             <line x1="0" y1="155" x2="300" y2="155" stroke="hsl(36 44% 50%)" strokeWidth="1"/>
             <polygon points="80,155 220,155 260,380 40,380" fill="hsl(36 44% 50%)" opacity="0.7"/>
-            <text x="150" y="260" textAnchor="middle" fontFamily="Frank Ruhl Libre" fontWeight="bold" fontSize="22" fill="white">70%</text>
-            <text x="150" y="285" textAnchor="middle" fontFamily="Heebo" fontSize="12" fill="rgba(255,255,255,0.8)">מהפוטנציאל</text>
-            <text x="150" y="302" textAnchor="middle" fontFamily="Heebo" fontSize="12" fill="rgba(255,255,255,0.8)">לא ממומש</text>
+            <text x="150" y="260" textAnchor="middle" fontFamily="Rubik" fontWeight="bold" fontSize="22" fill="white">70%</text>
+            <text x="150" y="285" textAnchor="middle" fontFamily="Rubik" fontSize="12" fill="rgba(255,255,255,0.8)">מהפוטנציאל</text>
+            <text x="150" y="302" textAnchor="middle" fontFamily="Rubik" fontSize="12" fill="rgba(255,255,255,0.8)">לא ממומש</text>
           </svg>
         </div>
       </div>

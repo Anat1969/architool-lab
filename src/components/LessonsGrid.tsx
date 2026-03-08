@@ -186,7 +186,7 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
             </p>
             <button
               onClick={() => setSearchQuery("")}
-              className="mt-3 font-mono text-[13px] text-gold hover:underline"
+              className="mt-3 text-[13px] font-medium text-gold hover:underline"
             >
               נקה חיפוש
             </button>

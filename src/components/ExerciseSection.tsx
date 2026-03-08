@@ -251,7 +251,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
       )}
 
       {/* Toast */}
-      <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 bg-olive text-paper font-mono text-[11px] tracking-[0.15em] px-6 py-3 z-[999] transition-transform duration-300 ${showToast ? "translate-y-0" : "translate-y-20"}`}>
+      <div className={`fixed bottom-8 left-1/2 -translate-x-1/2 bg-olive text-paper text-[12px] font-bold tracking-[0.1em] px-6 py-3 z-[999] transition-transform duration-300 ${showToast ? "translate-y-0" : "translate-y-20"}`}>
         העבודה הועלתה ✓
       </div>
     </>

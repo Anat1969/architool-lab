@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["'Noto Serif Hebrew'", "serif"],
-        mono: ["'IBM Plex Mono'", "monospace"],
+        display: ["'Rubik'", "sans-serif"],
+        mono: ["'Rubik'", "sans-serif"],
         body: ["'Rubik'", "sans-serif"],
         sans: ["'Rubik'", "sans-serif"],
       },
