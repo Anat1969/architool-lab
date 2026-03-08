@@ -29,6 +29,11 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
   const [newStudentName, setNewStudentName] = useState("");
   const [selectedStudentId, setSelectedStudentId] = useState<number | null>(null);
   const [activeStudentFilter, setActiveStudentFilter] = useState<number | null>(null);
+  const [editingItemId, setEditingItemId] = useState<number | null>(null);
+  const [editCaption, setEditCaption] = useState("");
+  const [editPreviewUrl, setEditPreviewUrl] = useState<string | null>(null);
+  const [editFile, setEditFile] = useState<File | null>(null);
+  const editFileInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
 
