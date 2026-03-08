@@ -11,11 +11,8 @@ const Index = () => {
   const viewerRef = useRef<HTMLDivElement>(null);
 
   const handleSelectLesson = (id: number) => {
-    if (activeLesson === id) {
-      setOpenViewer(id);
-    } else {
-      setActiveLesson(id);
-    }
+    setActiveLesson(id);
+    setOpenViewer(id);
   };
 
   useEffect(() => {
