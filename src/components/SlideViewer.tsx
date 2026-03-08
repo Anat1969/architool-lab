@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { ChevronRight, ChevronLeft, X } from "lucide-react";
 import { lesson02Slides } from "./Lesson02Slides";
 import { lesson03Slides } from "./Lesson03Slides";
+import { lesson04Slides } from "./Lesson04Slides";
 
 interface Slide {
   id: number;
@@ -250,7 +251,7 @@ interface SlideViewerProps {
 
 const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : lessonId === 3 ? lesson03Slides : [];
+  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : lessonId === 3 ? lesson03Slides : lessonId === 4 ? lesson04Slides : [];
   const total = slides.length;
 
   const goTo = useCallback((index: number) => {
