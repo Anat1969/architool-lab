@@ -181,7 +181,7 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
           ))
         ) : (
           <div className="w-full py-12 text-center">
-            <p className="font-display text-[18px] font-bold text-foreground/40">
+            <p className="text-[18px] font-bold text-foreground/45">
               לא נמצאו שיעורים עבור "{searchQuery}"
             </p>
             <button
