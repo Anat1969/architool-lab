@@ -1,3 +1,5 @@
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import LessonCard from "./LessonCard";
 import type { Lesson } from "./LessonCard";
 
@@ -6,7 +8,7 @@ const lessons: Lesson[] = [
     id: 1,
     number: "שיעור 01",
     title: "שליטה מוחלטת ב-AI<br>שלוש רמות דיוק",
-    description: "רוב האנשים עובדים רק ברמת הצ'אט — ומפספסים 70% מהפוטנציאל. שלוש שכבות הפקדה שהופכות את Claude למומחה אישי.",
+    description: "רוב האנשים עובדים רק ברמת הצ'אט — ומפספסים 70% מהפוטנציאל.",
     meta: "14 שקפים · 40 דק׳",
     tags: ["Settings", "Project", "Chat"],
     locked: false,
@@ -15,27 +17,27 @@ const lessons: Lesson[] = [
     id: 2,
     number: "שיעור 02",
     title: "ממשקים<br>Revit API + AI",
-    description: "חיבור כלי AI לסביבת העבודה האדריכלית שלך.",
+    description: "חיבור כלי AI לסביבת העבודה האדריכלית.",
     meta: "15 שקפים · 45 דק׳",
-    tags: ["Revit", "API", "Integration"],
+    tags: ["Revit", "API"],
     locked: false,
   },
   {
     id: 3,
     number: "שיעור 03",
     title: "כלי, שותף, בקרה<br>מחקר עם AI",
-    description: "איך להפוך AI לשותף מחקר אמיתי — כלי, שותף ובקרה.",
+    description: "איך להפוך AI לשותף מחקר אמיתי.",
     meta: "15 שקפים · 45 דק׳",
-    tags: ["Research", "Control", "AI"],
+    tags: ["Research", "AI"],
     locked: false,
   },
   {
     id: 4,
     number: "שיעור 04",
     title: "ארכיטקטורת ידע<br>טיפולוגיות",
-    description: "איך לבנות ארכיטקטורת ידע עם AI — טיפולוגיות, מכולות, שלדים ומערכות.",
+    description: "בניית ארכיטקטורת ידע עם AI.",
     meta: "30 שקפים · 90 דק׳",
-    tags: ["Typologies", "Knowledge", "Systems"],
+    tags: ["Typologies", "Systems"],
     locked: false,
   },
   {
@@ -51,36 +53,36 @@ const lessons: Lesson[] = [
     id: 6,
     number: "שיעור 06",
     title: "דיוק והשראה<br>AI לאדריכלים",
-    description: "דיוק והשראה — איך לשלב AI בתהליך התכנון האדריכלי.",
+    description: "דיוק והשראה בתהליך התכנון.",
     meta: "14 שקפים · 45 דק׳",
-    tags: ["AI", "Precision", "Inspiration"],
+    tags: ["Precision", "Inspiration"],
     locked: false,
   },
   {
     id: 7,
     number: "שיעור 07",
     title: "מעבר לשאלה הנכונה<br>חשיבה עם AI",
-    description: "איך לחשוב מעבר לשאלה הנכונה — שיטות לעבודה עמוקה עם AI.",
+    description: "שיטות לעבודה עמוקה עם AI.",
     meta: "14 שקפים · 45 דק׳",
-    tags: ["Thinking", "Questions", "AI"],
+    tags: ["Thinking", "AI"],
     locked: false,
   },
   {
     id: 8,
     number: "שיעור 08",
     title: "דפוסים עירוניים<br>ניתוח עם AI",
-    description: "חשיפת דפוסים עירוניים — איך לנתח מרקמים עירוניים בעזרת AI.",
+    description: "ניתוח מרקמים עירוניים בעזרת AI.",
     meta: "15 שקפים · 45 דק׳",
-    tags: ["Urban", "Patterns", "Analysis"],
+    tags: ["Urban", "Patterns"],
     locked: false,
   },
   {
     id: 9,
     number: "שיעור 09",
     title: "תבניות ונכסים דיגיטליים<br>AI Templates",
-    description: "בניית תבניות ונכסים דיגיטליים — איך ליצור Templates חכמים עם AI.",
+    description: "בניית Templates חכמים עם AI.",
     meta: "15 שקפים · 45 דק׳",
-    tags: ["Templates", "Assets", "Workflow"],
+    tags: ["Templates", "Workflow"],
     locked: false,
   },
 ];
@@ -91,14 +93,44 @@ interface LessonsGridProps {
 }
 
 const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
-  return (
-    <section className="px-6 md:px-12 py-16">
-      <p className="label-mono text-muted-alpha mb-9 flex items-center gap-3">
-        בחר שיעור
-        <span className="h-px w-20 bg-grid block" />
-      </p>
+  const scrollRef = useRef<HTMLDivElement>(null);
 
-      <div className="flex overflow-x-auto gap-[2px] bg-grid pb-4 scrollbar-thin">
+  const scroll = (dir: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const amount = 420;
+    scrollRef.current.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section className="px-6 md:px-12 py-6">
+      <div className="flex items-center justify-between mb-4">
+        <p className="label-mono text-muted-alpha flex items-center gap-3">
+          בחר שיעור
+          <span className="h-px w-12 bg-grid block" />
+        </p>
+        <div className="flex gap-1">
+          <button
+            onClick={() => scroll("right")}
+            className="w-8 h-8 flex items-center justify-center bg-warm-mid hover:bg-gold hover:text-ink text-foreground/50 transition-colors"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => scroll("left")}
+            className="w-8 h-8 flex items-center justify-center bg-warm-mid hover:bg-gold hover:text-ink text-foreground/50 transition-colors"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      <div
+        ref={scrollRef}
+        className="flex overflow-x-auto gap-[2px] bg-grid pb-2 scrollbar-thin scroll-smooth"
+      >
         {lessons.map((lesson) => (
           <LessonCard
             key={lesson.id}
