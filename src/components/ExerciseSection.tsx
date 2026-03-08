@@ -100,7 +100,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
               בנה את הסטיינג האדריכלי שלך
             </h2>
           </div>
-          <p className="text-[13px] leading-[1.6] text-foreground/60 max-w-[360px]">
+          <p className="text-[14px] leading-[1.65] text-foreground/70 max-w-[380px]">
             השתמש בשלוש שכבות הפקדה — Settings, Project, Chat — כדי לבנות כלי עבודה אמיתי.
           </p>
         </div>
