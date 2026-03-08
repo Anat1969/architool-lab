@@ -12,8 +12,8 @@ const Hero = () => {
             שיעורים
           </h1>
         </div>
-        <p className="text-sm text-muted-alpha max-w-[400px] leading-[1.6] pb-1">
-          כל שיעור מתחיל בבריף, מסתיים בכלי. לחץ פעמיים על שיעור כדי לפתוח.
+        <p className="text-[17px] font-bold text-foreground/70 max-w-[400px] leading-[1.6] pb-1">
+          כל שיעור מתחיל בבריף, מסתיים בכלי. לחץ על שיעור כדי לפתוח.
         </p>
       </div>
     </section>
