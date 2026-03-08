@@ -274,33 +274,33 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
   return (
     <div className="bg-[#111] border-t-[3px] border-gold" tabIndex={0} onKeyDown={handleKeyDown}>
       {/* Viewer topbar */}
-      <div className="bg-black/80 px-6 md:px-12 py-3.5 flex justify-between items-center border-b border-white/[0.06] sticky top-[53px] z-[100]">
-        <span className="font-mono text-[11px] tracking-[0.2em] text-white/50">
+      <div className="bg-black/80 px-6 md:px-12 py-4 flex justify-between items-center border-b border-white/[0.06] sticky top-[53px] z-[100]">
+        <span className="font-display text-[18px] font-bold tracking-wide text-white/90">
           {lessonId === 1 ? "שיעור 01 — שליטה מוחלטת ב-AI" : lessonId === 6 ? "שיעור 06 — דיוק והשראה" : lessonId === 7 ? "שיעור 07 — מעבר לשאלה הנכונה" : lessonId === 8 ? "שיעור 08 — דפוסים עירוניים" : lessonId === 9 ? "שיעור 09 — תבניות ונכסים דיגיטליים" : `שיעור 0${lessonId}`}
         </span>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <button
             onClick={() => goTo(currentSlide - 1)}
             disabled={currentSlide === 0}
-            className="bg-white/[0.08] border border-white/10 text-white/70 font-mono text-xs px-4 py-1.5 cursor-pointer transition-all hover:bg-white/15 hover:text-white disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
+            className="bg-white/[0.1] border border-white/15 text-white font-mono text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold hover:text-ink hover:border-gold disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
           >
-            <ChevronRight className="w-3 h-3 inline" /> הקודם
+            <ChevronRight className="w-4 h-4 inline mr-1" /> הקודם
           </button>
-          <span className="font-mono text-[11px] text-white/35 min-w-[60px] text-center">
+          <span className="font-mono text-[16px] font-bold text-white/60 min-w-[70px] text-center">
             {currentSlide + 1} / {total}
           </span>
           <button
             onClick={() => goTo(currentSlide + 1)}
             disabled={currentSlide === total - 1}
-            className="bg-white/[0.08] border border-white/10 text-white/70 font-mono text-xs px-4 py-1.5 cursor-pointer transition-all hover:bg-white/15 hover:text-white disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
+            className="bg-gold border border-gold text-ink font-mono text-[15px] font-bold px-5 py-2.5 cursor-pointer transition-all hover:bg-gold/80 disabled:opacity-20 disabled:cursor-default tracking-[0.05em]"
           >
-            הבא <ChevronLeft className="w-3 h-3 inline" />
+            הבא <ChevronLeft className="w-4 h-4 inline ml-1" />
           </button>
           <button
             onClick={onClose}
-            className="bg-transparent border border-white/15 text-white/50 font-mono text-[10px] tracking-[0.15em] px-3.5 py-1.5 cursor-pointer transition-all hover:text-white hover:border-white/40"
+            className="bg-transparent border border-white/20 text-white/70 font-mono text-[14px] font-bold tracking-[0.1em] px-4 py-2.5 cursor-pointer transition-all hover:text-white hover:border-white/50 hover:bg-white/10"
           >
-            סגור <X className="w-3 h-3 inline" />
+            סגור <X className="w-4 h-4 inline" />
           </button>
         </div>
       </div>
