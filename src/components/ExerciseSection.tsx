@@ -47,6 +47,34 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
   const [showExample, setShowExample] = useState(false);
   const [showFaq, setShowFaq] = useState(false);
 
+  // Recording URL editing
+  const [recordingUrl, setRecordingUrl] = useState<string>("");
+  const [isEditingRecording, setIsEditingRecording] = useState(false);
+  const [tempRecordingUrl, setTempRecordingUrl] = useState("");
+
+  useEffect(() => {
+    const saved = localStorage.getItem(`recording-url-${lessonId}`);
+    setRecordingUrl(saved || "");
+    setIsEditingRecording(false);
+  }, [lessonId]);
+
+  const saveRecordingUrl = () => {
+    const url = tempRecordingUrl.trim();
+    if (url) {
+      localStorage.setItem(`recording-url-${lessonId}`, url);
+      setRecordingUrl(url);
+    } else {
+      localStorage.removeItem(`recording-url-${lessonId}`);
+      setRecordingUrl("");
+    }
+    setIsEditingRecording(false);
+  };
+
+  const startEditingRecording = () => {
+    setTempRecordingUrl(recordingUrl || exercise.recordingUrl || "");
+    setIsEditingRecording(true);
+  };
+
   const processFile = useCallback((file: File) => {
     if (!file.type.startsWith("image/")) return;
     setSelectedFile(file);
