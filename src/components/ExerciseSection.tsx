@@ -123,7 +123,7 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
 
         <div className="bg-paper border border-grid p-5">
           <div className="flex items-center gap-3 mb-4">
-            <p className="label-mono text-foreground/40">הגלריה — העלה עבודה</p>
+            <p className="label-mono text-foreground/50">הגלריה — העלה עבודה</p>
             <span className="h-px flex-1 bg-grid block" />
           </div>
 
