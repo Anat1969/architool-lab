@@ -95,8 +95,8 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
       <section className="px-6 md:px-12 py-10 bg-warm-mid border-t border-grid">
         <div className="flex items-start justify-between gap-6 mb-8 flex-wrap">
           <div>
-            <p className="label-mono text-gold mb-2">תרגיל — שיעור 0{lessonId}</p>
-            <h2 className="font-display text-[clamp(22px,3vw,32px)] font-bold leading-[1.1]">
+            <p className="label-mono text-gold mb-3">תרגיל — שיעור 0{lessonId}</p>
+            <h2 className="text-[clamp(24px,3.2vw,34px)] font-bold leading-[1.1]">
               בנה את הסטיינג האדריכלי שלך
             </h2>
           </div>
