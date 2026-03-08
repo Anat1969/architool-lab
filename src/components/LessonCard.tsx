@@ -54,7 +54,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         />
 
         {/* Meta */}
-        <span className={`font-mono text-[9px] tracking-[0.15em] ${isActive ? "text-paper/50" : "text-foreground/40"}`}>
+        <span className={`font-mono text-[13px] tracking-[0.1em] font-medium ${isActive ? "text-paper/60" : "text-foreground/50"}`}>
           {lesson.meta}
         </span>
 
