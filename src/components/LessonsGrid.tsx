@@ -202,6 +202,15 @@ const lessons: Lesson[] = [
     tags: ["Strategy", "Advanced", "AI"],
     locked: false,
   },
+  {
+    id: 23,
+    number: "שיעור 23",
+    title: "פרקטיקה מקצועית<br>AI בתכנון",
+    description: "יישום פרקטי של AI בתהליכי תכנון ואדריכלות.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Practice", "Design", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
