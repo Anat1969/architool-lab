@@ -184,6 +184,15 @@ const lessons: Lesson[] = [
     tags: ["NotebookLM", "Typologies"],
     locked: false,
   },
+  {
+    id: 21,
+    number: "שיעור 21",
+    title: "אדריכלות ו-AI<br>תכנון מתקדם",
+    description: "תכנון אדריכלי מתקדם עם כלי AI וניתוח טיפולוגי.",
+    meta: "12 שקפים · 45 דק׳",
+    tags: ["Architecture", "Planning", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
