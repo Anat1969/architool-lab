@@ -20,6 +20,7 @@ import { lesson20Slides } from "./Lesson20Slides";
 import { lesson21Slides } from "./Lesson21Slides";
 import { lesson22Slides } from "./Lesson22Slides";
 import { lesson23Slides } from "./Lesson23Slides";
+import { lesson30Slides } from "./Lesson30Slides";
 
 interface Slide {
   id: number;
@@ -268,7 +269,7 @@ interface SlideViewerProps {
 
 const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : lessonId === 3 ? lesson03Slides : lessonId === 4 ? lesson04Slides : lessonId === 6 ? lesson06Slides : lessonId === 7 ? lesson07Slides : lessonId === 8 ? lesson08Slides : lessonId === 9 ? lesson09Slides : lessonId === 10 ? lesson10Slides : lessonId === 12 ? lesson12Slides : lessonId === 13 ? lesson13Slides : lessonId === 14 ? lesson14Slides : lessonId === 15 ? lesson15Slides : lessonId === 16 ? lesson16Slides : lessonId === 17 ? lesson17Slides : lessonId === 18 ? lesson18Slides : lessonId === 19 ? lesson19Slides : lessonId === 20 ? lesson20Slides : lessonId === 21 ? lesson21Slides : lessonId === 22 ? lesson22Slides : lessonId === 23 ? lesson23Slides : [];
+  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : lessonId === 3 ? lesson03Slides : lessonId === 4 ? lesson04Slides : lessonId === 6 ? lesson06Slides : lessonId === 7 ? lesson07Slides : lessonId === 8 ? lesson08Slides : lessonId === 9 ? lesson09Slides : lessonId === 10 ? lesson10Slides : lessonId === 12 ? lesson12Slides : lessonId === 13 ? lesson13Slides : lessonId === 14 ? lesson14Slides : lessonId === 15 ? lesson15Slides : lessonId === 16 ? lesson16Slides : lessonId === 17 ? lesson17Slides : lessonId === 18 ? lesson18Slides : lessonId === 19 ? lesson19Slides : lessonId === 20 ? lesson20Slides : lessonId === 21 ? lesson21Slides : lessonId === 22 ? lesson22Slides : lessonId === 23 ? lesson23Slides : lessonId === 30 ? lesson30Slides : [];
   const total = slides.length;
 
   const goTo = useCallback((index: number) => {

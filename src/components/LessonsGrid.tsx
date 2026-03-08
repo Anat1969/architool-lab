@@ -211,6 +211,15 @@ const lessons: Lesson[] = [
     tags: ["Practice", "Design", "AI"],
     locked: false,
   },
+  {
+    id: 30,
+    number: "שיעור 30",
+    title: "NotebookLM<br>Assistant ו-Knowledge",
+    description: "עבודה עם Assistant ו-Knowledge ב-NotebookLM לאדריכלים.",
+    meta: "14 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Assistant", "Knowledge"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
