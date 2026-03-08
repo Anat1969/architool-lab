@@ -41,7 +41,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       </p>
 
       <h2
-        className="font-display text-[26px] font-bold leading-[1.15] mb-2.5"
+        className="font-display text-[32px] font-bold leading-[1.15] mb-3 text-foreground"
         dangerouslySetInnerHTML={{ __html: lesson.title }}
       />
 
