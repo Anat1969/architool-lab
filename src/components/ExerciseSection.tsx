@@ -112,11 +112,11 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
             { num: "03", title: "בחן ותעד", desc: "שאל שאלה, צלם screenshot, תעד." },
           ].map((step) => (
             <div key={step.num} className="bg-paper p-5">
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="font-mono text-[10px] tracking-[0.2em] text-gold font-bold">{step.num}</span>
-                <h3 className="text-sm font-semibold">{step.title}</h3>
+              <div className="flex items-baseline gap-2 mb-1.5">
+                <span className="text-[12px] tracking-[0.15em] text-gold font-bold">{step.num}</span>
+                <h3 className="text-[15px] font-bold">{step.title}</h3>
               </div>
-              <p className="text-xs leading-[1.5] text-foreground/40">{step.desc}</p>
+              <p className="text-[13px] leading-[1.55] text-foreground/55">{step.desc}</p>
             </div>
           ))}
         </div>
