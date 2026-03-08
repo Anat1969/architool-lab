@@ -275,7 +275,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
     <div className="bg-[#111] border-t-[3px] border-gold" tabIndex={0} onKeyDown={handleKeyDown}>
       {/* Viewer topbar */}
       <div className="bg-black/80 px-6 md:px-12 py-4 flex justify-between items-center border-b border-white/[0.06] sticky top-[53px] z-[100]">
-        <span className="font-display text-[18px] font-bold tracking-wide text-white/90">
+        <span className="text-[18px] font-bold tracking-wide text-white/90">
           {lessonId === 1 ? "שיעור 01 — שליטה מוחלטת ב-AI" : lessonId === 6 ? "שיעור 06 — דיוק והשראה" : lessonId === 7 ? "שיעור 07 — מעבר לשאלה הנכונה" : lessonId === 8 ? "שיעור 08 — דפוסים עירוניים" : lessonId === 9 ? "שיעור 09 — תבניות ונכסים דיגיטליים" : `שיעור 0${lessonId}`}
         </span>
         <div className="flex items-center gap-4">
