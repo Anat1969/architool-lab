@@ -68,9 +68,14 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         />
 
         {/* Meta */}
-        <span className={`text-[13px] tracking-[0.05em] font-medium ${isActive ? "text-paper/60" : "text-foreground/55"}`}>
-          {lesson.meta}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className={`text-[13px] tracking-[0.05em] font-medium ${isActive ? "text-paper/60" : "text-foreground/55"}`}>
+            {lesson.meta}
+          </span>
+          {hasRecording && (
+            <Video className={`w-3.5 h-3.5 ${isActive ? "text-gold" : "text-gold/70"}`} />
+          )}
+        </div>
 
         {/* Tags */}
         {lesson.tags.length > 0 && (
