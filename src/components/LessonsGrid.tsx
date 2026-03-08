@@ -29,6 +29,15 @@ const lessons: Lesson[] = [
     tags: ["NotebookLM", "Research", "Control"],
     locked: false,
   },
+  {
+    id: 4,
+    number: "שיעור 04",
+    title: "ארכיטקטורת ידע<br>טיפולוגיות",
+    description: "איך לבנות ארכיטקטורת ידע עם AI — טיפולוגיות, מכולות, שלדים ומערכות.",
+    meta: "15 שקפים · 45 דק׳ · חלק א׳",
+    tags: ["NotebookLM", "Typologies", "Knowledge"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
