@@ -45,7 +45,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         dangerouslySetInnerHTML={{ __html: lesson.title }}
       />
 
-      <p className={`text-[13px] leading-[1.7] mb-6 ${isActive ? "opacity-60" : "text-muted-alpha"}`}>
+      <p className={`text-[15px] leading-[1.7] mb-6 ${isActive ? "text-paper/80" : "text-foreground/70"}`}>
         {lesson.description}
       </p>
 
