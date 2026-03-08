@@ -82,8 +82,8 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             w-full font-mono text-[14px] tracking-[0.1em] uppercase cursor-pointer font-bold
             flex items-center justify-center gap-2 transition-all duration-200
             ${isActive
-              ? "bg-gold text-ink py-2.5"
-              : "bg-gold/0 text-gold py-0 max-h-0 opacity-0 group-hover:bg-gold group-hover:text-ink group-hover:py-2.5 group-hover:max-h-12 group-hover:opacity-100 overflow-hidden"
+              ? "bg-gold text-ink py-3"
+              : "bg-gold/0 text-gold py-0 max-h-0 opacity-0 group-hover:bg-gold group-hover:text-ink group-hover:py-3 group-hover:max-h-14 group-hover:opacity-100 overflow-hidden"
             }
           `}
           onClick={(e) => {
