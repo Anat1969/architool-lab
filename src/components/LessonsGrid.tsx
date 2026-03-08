@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState, useMemo } from "react";
+import { ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import LessonCard from "./LessonCard";
 import type { Lesson } from "./LessonCard";
 
@@ -92,8 +92,23 @@ interface LessonsGridProps {
   onSelectLesson: (id: number) => void;
 }
 
+const stripHtml = (html: string) => html.replace(/<[^>]*>/g, " ");
+
 const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredLessons = useMemo(() => {
+    if (!searchQuery.trim()) return lessons;
+    const q = searchQuery.trim().toLowerCase();
+    return lessons.filter(
+      (l) =>
+        l.number.toLowerCase().includes(q) ||
+        stripHtml(l.title).toLowerCase().includes(q) ||
+        l.description.toLowerCase().includes(q) ||
+        l.tags.some((t) => t.toLowerCase().includes(q))
+    );
+  }, [searchQuery]);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -106,12 +121,35 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
 
   return (
     <section className="px-6 md:px-12 py-6">
-      <div className="flex items-center justify-between mb-4">
+      {/* Header row */}
+      <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
         <p className="font-display text-[16px] font-bold text-foreground/70 flex items-center gap-3">
           בחר שיעור
           <span className="h-px w-12 bg-grid block" />
         </p>
-        <div className="flex gap-1">
+
+        <div className="flex items-center gap-3">
+          {/* Search */}
+          <div className="relative">
+            <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-foreground/40 pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="חפש שיעור..."
+              className="bg-warm-mid border border-grid text-foreground font-body text-[14px] pr-9 pl-8 py-2 w-[220px] focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 placeholder:text-foreground/30 transition-colors"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute left-2.5 top-1/2 -translate-y-1/2 text-foreground/40 hover:text-foreground transition-colors"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+
+          {/* Scroll buttons */}
           <button
             onClick={() => scroll("right")}
             className="w-8 h-8 flex items-center justify-center bg-warm-mid hover:bg-gold hover:text-ink text-foreground/50 transition-colors"
@@ -127,18 +165,33 @@ const LessonsGrid = ({ activeLesson, onSelectLesson }: LessonsGridProps) => {
         </div>
       </div>
 
+      {/* Lessons scroll row */}
       <div
         ref={scrollRef}
         className="flex overflow-x-auto gap-[2px] bg-grid pb-2 scrollbar-thin scroll-smooth"
       >
-        {lessons.map((lesson) => (
-          <LessonCard
-            key={lesson.id}
-            lesson={lesson}
-            isActive={activeLesson === lesson.id}
-            onClick={onSelectLesson}
-          />
-        ))}
+        {filteredLessons.length > 0 ? (
+          filteredLessons.map((lesson) => (
+            <LessonCard
+              key={lesson.id}
+              lesson={lesson}
+              isActive={activeLesson === lesson.id}
+              onClick={onSelectLesson}
+            />
+          ))
+        ) : (
+          <div className="w-full py-12 text-center">
+            <p className="font-display text-[18px] font-bold text-foreground/40">
+              לא נמצאו שיעורים עבור "{searchQuery}"
+            </p>
+            <button
+              onClick={() => setSearchQuery("")}
+              className="mt-3 font-mono text-[13px] text-gold hover:underline"
+            >
+              נקה חיפוש
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
