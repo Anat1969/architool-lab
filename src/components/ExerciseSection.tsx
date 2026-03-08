@@ -118,6 +118,44 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
     setTimeout(() => setShowToast(false), 2800);
   };
 
+  const startEditing = (item: GalleryItem) => {
+    setEditingItemId(item.id);
+    setEditCaption(item.caption);
+    setEditPreviewUrl(item.imageUrl || null);
+    setEditFile(null);
+  };
+
+  const handleEditFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !file.type.startsWith("image/")) return;
+    setEditFile(file);
+    const reader = new FileReader();
+    reader.onload = (ev) => setEditPreviewUrl(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  };
+
+  const saveEdit = () => {
+    if (editingItemId === null) return;
+    setGallery((prev) =>
+      prev.map((item) =>
+        item.id === editingItemId
+          ? { ...item, caption: editCaption, imageUrl: editPreviewUrl || item.imageUrl }
+          : item
+      )
+    );
+    setEditingItemId(null);
+    setEditCaption("");
+    setEditPreviewUrl(null);
+    setEditFile(null);
+  };
+
+  const cancelEdit = () => {
+    setEditingItemId(null);
+    setEditCaption("");
+    setEditPreviewUrl(null);
+    setEditFile(null);
+  };
+
   const filteredGallery = activeStudentFilter
     ? gallery.filter((item) => {
         const student = students.find((s) => s.id === activeStudentFilter);
