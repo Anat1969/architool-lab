@@ -298,7 +298,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
           </button>
           <button
             onClick={onClose}
-            className="bg-transparent border border-white/20 text-white/70 font-mono text-[14px] font-bold tracking-[0.1em] px-4 py-2.5 cursor-pointer transition-all hover:text-white hover:border-white/50 hover:bg-white/10"
+            className="bg-transparent border border-white/20 text-white/70 text-[14px] font-bold tracking-[0.08em] px-4 py-2.5 cursor-pointer transition-all hover:text-white hover:border-white/50 hover:bg-white/10"
           >
             סגור <X className="w-4 h-4 inline" />
           </button>
