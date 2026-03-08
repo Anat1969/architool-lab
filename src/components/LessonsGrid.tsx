@@ -130,6 +130,15 @@ const lessons: Lesson[] = [
     tags: ["NotebookLM", "Practical"],
     locked: false,
   },
+  {
+    id: 15,
+    number: "שיעור 15",
+    title: "תרגול מעשי<br>AI לאדריכלים",
+    description: "תרגול מעשי ויישום כלי AI בעבודה אדריכלית.",
+    meta: "12 שקפים · 45 דק׳",
+    tags: ["Practice", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
