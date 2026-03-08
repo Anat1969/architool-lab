@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Upload, Send, X, Clipboard, UserPlus, User } from "lucide-react";
+import { Upload, Send, X, Clipboard, UserPlus, User, Pencil } from "lucide-react";
 
 interface ExerciseSectionProps {
   lessonId: number;
