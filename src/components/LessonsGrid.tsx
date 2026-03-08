@@ -94,6 +94,24 @@ const lessons: Lesson[] = [
     tags: ["Assets", "Digital", "AI"],
     locked: false,
   },
+  {
+    id: 11,
+    number: "שיעור 11",
+    title: "בקרוב",
+    description: "שיעור זה יפורסם בקרוב.",
+    meta: "—",
+    tags: [],
+    locked: true,
+  },
+  {
+    id: 12,
+    number: "שיעור 12",
+    title: "NotebookLM<br>מחקר מתקדם",
+    description: "מחקר מתקדם עם NotebookLM ו-AI.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Research"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
