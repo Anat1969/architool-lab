@@ -31,16 +31,27 @@ export const lesson06Slides = pages.map((src, i) => ({
         className="w-full h-full object-contain"
         style={mirroredSlides.has(i + 1) ? { transform: "scaleX(-1)" } : undefined}
       />
-      {/* Cover NotebookLM logo - bottom-left for mirrored slides, bottom-right for normal */}
+      {/* Cover NotebookLM logo */}
       <div
         className="absolute"
         style={{
           bottom: "2%",
-          right: mirroredSlides.has(i + 1) ? "2%" : undefined,
-          left: mirroredSlides.has(i + 1) ? undefined : "2%",
-          width: "120px",
-          height: "28px",
+          left: "2%",
+          width: "140px",
+          height: "30px",
           backgroundColor: "hsl(38 38% 93%)",
+          zIndex: 10,
+        }}
+      />
+      <div
+        className="absolute"
+        style={{
+          bottom: "2%",
+          right: "2%",
+          width: "140px",
+          height: "30px",
+          backgroundColor: "hsl(38 38% 93%)",
+          zIndex: 10,
         }}
       />
     </div>
