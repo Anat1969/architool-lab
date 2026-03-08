@@ -50,7 +50,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       </p>
 
       <div className="flex justify-between items-center">
-        <span className={`font-mono text-[10px] tracking-[0.15em] ${isActive ? "text-paper/40" : "text-muted-alpha"}`}>
+        <span className={`font-mono text-[12px] tracking-[0.15em] font-medium ${isActive ? "text-paper/60" : "text-foreground/50"}`}>
           {lesson.meta}
         </span>
         {lesson.tags.length > 0 && (
