@@ -24,7 +24,8 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
   return (
     <div
       className={`
-        bg-paper p-10 relative overflow-hidden transition-colors duration-200 cursor-pointer
+        bg-paper p-10 relative overflow-hidden transition-all duration-300 cursor-pointer
+        min-w-[280px] w-[280px] flex-shrink-0 group
         ${isActive ? "!bg-ink !text-paper" : ""}
         ${lesson.locked ? "opacity-45 !cursor-default" : ""}
         ${!lesson.locked && !isActive ? "hover:bg-warm-mid" : ""}
