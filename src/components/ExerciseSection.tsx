@@ -1,5 +1,6 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { Upload, Send, X, Clipboard, UserPlus, User, Pencil } from "lucide-react";
+import { getExerciseData } from "@/data/exerciseData";
 
 interface ExerciseSectionProps {
   lessonId: number;
@@ -163,27 +164,26 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
       })
     : gallery;
 
+  const exercise = useMemo(() => getExerciseData(lessonId), [lessonId]);
+  const lessonLabel = lessonId < 10 ? `0${lessonId}` : `${lessonId}`;
+
   return (
     <>
       <section className="px-6 md:px-12 py-10 bg-warm-mid border-t border-grid">
         <div className="flex items-start justify-between gap-6 mb-8 flex-wrap">
           <div>
-            <p className="label-mono text-gold mb-3">תרגיל — שיעור 0{lessonId}</p>
+            <p className="label-mono text-gold mb-3">תרגיל — שיעור {lessonLabel}</p>
             <h2 className="text-[clamp(24px,3.2vw,34px)] font-bold leading-[1.1]">
-              בנה את הסטיינג האדריכלי שלך
+              {exercise.title}
             </h2>
           </div>
           <p className="text-[14px] leading-[1.65] text-foreground/70 max-w-[380px]">
-            השתמש בשלוש שכבות הפקדה — Settings, Project, Chat — כדי לבנות כלי עבודה אמיתי.
+            {exercise.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2px] bg-grid mb-8">
-          {[
-            { num: "01", title: "הגדר סטיינג", desc: "כתוב 4+ הוראות ל-Settings." },
-            { num: "02", title: "צור פרויקט", desc: "בחר סוג מבנה, הוסף הקשר ותקנים." },
-            { num: "03", title: "בחן ותעד", desc: "שאל שאלה, צלם screenshot, תעד." },
-          ].map((step) => (
+          {exercise.steps.map((step) => (
             <div key={step.num} className="bg-paper p-5">
               <div className="flex items-baseline gap-2 mb-1.5">
                 <span className="text-[12px] tracking-[0.15em] text-gold font-bold">{step.num}</span>
