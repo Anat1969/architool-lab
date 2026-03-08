@@ -175,6 +175,15 @@ const lessons: Lesson[] = [
     tags: ["Spatial", "GIS", "AI"],
     locked: false,
   },
+  {
+    id: 20,
+    number: "שיעור 20",
+    title: "NotebookLM מתקדם<br>טיפולוגיות אדריכליות",
+    description: "שימוש מתקדם ב-NotebookLM לניתוח טיפולוגיות אדריכליות.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Typologies"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
