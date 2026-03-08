@@ -58,7 +58,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             {lesson.tags.map((tag) => (
               <span
                 key={tag}
-                className={`font-mono text-[9px] tracking-[0.15em] uppercase px-2 py-0.5 border ${
+                className={`font-mono text-[11px] tracking-[0.15em] uppercase px-2.5 py-1 border font-medium ${
                   isActive ? "border-paper/20 text-paper/50" : "border-grid text-muted-alpha"
                 }`}
               >
