@@ -19,6 +19,7 @@ import { lesson19Slides } from "./Lesson19Slides";
 import { lesson20Slides } from "./Lesson20Slides";
 import { lesson21Slides } from "./Lesson21Slides";
 import { lesson22Slides } from "./Lesson22Slides";
+import { lesson23Slides } from "./Lesson23Slides";
 
 interface Slide {
   id: number;
