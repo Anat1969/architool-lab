@@ -21,25 +21,35 @@ const pages = [
 // Slides 2-14 are mirrored from the source PDF extraction
 const mirroredSlides = new Set([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
 
+const Slide = ({ src, index }: { src: string; index: number }) => {
+  const isMirrored = mirroredSlides.has(index + 1);
+  return (
+    <div className="w-full h-full flex items-center justify-center">
+      <div className="relative inline-block max-w-full max-h-full">
+        <img
+          src={src}
+          alt={`שקף ${index + 1}`}
+          className="max-w-full max-h-full block"
+          style={isMirrored ? { transform: "scaleX(-1)" } : undefined}
+        />
+        {/* Cover NotebookLM logo */}
+        <div
+          className="absolute z-20"
+          style={{
+            bottom: "1%",
+            left: isMirrored ? "1%" : undefined,
+            right: isMirrored ? undefined : "1%",
+            width: "13%",
+            height: "5%",
+            backgroundColor: "hsl(38 38% 93%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
 export const lesson06Slides = pages.map((src, i) => ({
   id: i + 1,
-  content: (
-    <div className="w-full h-full flex items-center justify-center relative overflow-hidden">
-      <img
-        src={src}
-        alt={`שקף ${i + 1}`}
-        className="w-full h-full object-contain"
-        style={mirroredSlides.has(i + 1) ? { transform: "scaleX(-1)" } : undefined}
-      />
-      {/* Cover NotebookLM logo on both corners */}
-      <div
-        className="absolute bottom-[1%] left-[1%] w-[150px] h-[35px] z-20"
-        style={{ backgroundColor: "hsl(38 38% 93%)" }}
-      />
-      <div
-        className="absolute bottom-[1%] right-[1%] w-[150px] h-[35px] z-20"
-        style={{ backgroundColor: "red" }}
-      />
-    </div>
-  ),
+  content: <Slide src={src} index={i} />,
 }));
