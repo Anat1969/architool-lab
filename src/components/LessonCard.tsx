@@ -72,7 +72,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       {!lesson.locked && (
         <button
           className={`
-            mt-6 font-mono text-[10px] tracking-[0.2em] uppercase bg-gold text-ink border-none cursor-pointer
+            mt-6 font-mono text-[13px] tracking-[0.2em] uppercase bg-gold text-ink border-none cursor-pointer font-bold
             transition-all duration-300 overflow-hidden
             ${isActive
               ? "px-5 py-2.5 max-h-12 opacity-100"
