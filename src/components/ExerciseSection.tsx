@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from "react";
-import { Upload, Send, X, Clipboard } from "lucide-react";
+import { Upload, Send, X, Clipboard, UserPlus, User } from "lucide-react";
 
 interface ExerciseSectionProps {
   lessonId: number;
@@ -10,6 +10,12 @@ interface GalleryItem {
   imageUrl?: string;
   caption: string;
   date: string;
+  studentName: string;
+}
+
+interface Student {
+  id: number;
+  name: string;
 }
 
 const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
@@ -19,6 +25,10 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
   const [gallery, setGallery] = useState<GalleryItem[]>([]);
   const [showToast, setShowToast] = useState(false);
   const [lightboxUrl, setLightboxUrl] = useState<string | null>(null);
+  const [students, setStudents] = useState<Student[]>([]);
+  const [newStudentName, setNewStudentName] = useState("");
+  const [selectedStudentId, setSelectedStudentId] = useState<number | null>(null);
+  const [activeStudentFilter, setActiveStudentFilter] = useState<number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +44,6 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
     if (e.target.files?.length) processFile(e.target.files[0]);
   };
 
-  // Paste from clipboard
   const handlePaste = useCallback((e: ClipboardEvent) => {
     const items = e.clipboardData?.items;
     if (!items) return;
@@ -53,7 +62,6 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
     return () => document.removeEventListener("paste", handlePaste);
   }, [handlePaste]);
 
-  // Drag & drop
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -72,14 +80,29 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
+  const handleAddStudent = () => {
+    const trimmed = newStudentName.trim();
+    if (!trimmed) return;
+    if (students.some((s) => s.name === trimmed)) return;
+    const newStudent: Student = { id: Date.now(), name: trimmed };
+    setStudents((prev) => [...prev, newStudent]);
+    setSelectedStudentId(newStudent.id);
+    setNewStudentName("");
+  };
+
   const handleSubmit = () => {
+    if (!selectedStudentId) return;
     if (!caption && !selectedFile) return;
+
+    const student = students.find((s) => s.id === selectedStudentId);
+    if (!student) return;
 
     const newItem: GalleryItem = {
       id: Date.now(),
       caption,
       date: new Date().toLocaleDateString("he-IL"),
       imageUrl: previewUrl || undefined,
+      studentName: student.name,
     };
 
     setGallery((prev) => [newItem, ...prev]);
@@ -89,6 +112,13 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
     setShowToast(true);
     setTimeout(() => setShowToast(false), 2800);
   };
+
+  const filteredGallery = activeStudentFilter
+    ? gallery.filter((item) => {
+        const student = students.find((s) => s.id === activeStudentFilter);
+        return student && item.studentName === student.name;
+      })
+    : gallery;
 
   return (
     <>
@@ -121,14 +151,105 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
           ))}
         </div>
 
+        {/* Student Management */}
+        <div className="bg-paper border border-grid p-5 mb-4">
+          <div className="flex items-center gap-3 mb-4">
+            <p className="label-mono text-foreground/50">ניהול סטודנטים</p>
+            <span className="h-px flex-1 bg-grid block" />
+          </div>
+
+          {/* Add new student */}
+          <div className="flex gap-3 mb-4 flex-wrap" dir="rtl">
+            <input
+              value={newStudentName}
+              onChange={(e) => setNewStudentName(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleAddStudent()}
+              className="bg-background border border-grid px-3 py-2 text-[14px] text-foreground transition-colors focus:outline-none focus:border-gold placeholder:text-foreground/35 flex-1 min-w-[180px]"
+              placeholder="הוסף שם סטודנט חדש..."
+            />
+            <button
+              onClick={handleAddStudent}
+              className="text-[12px] font-bold tracking-[0.1em] uppercase px-5 py-2 bg-gold text-ink border-none cursor-pointer transition-all hover:bg-gold/80 flex items-center gap-2"
+            >
+              <UserPlus className="w-3.5 h-3.5" />
+              הוסף
+            </button>
+          </div>
+
+          {/* Student list / filter chips */}
+          {students.length > 0 && (
+            <div className="flex gap-2 flex-wrap" dir="rtl">
+              <button
+                onClick={() => setActiveStudentFilter(null)}
+                className={`text-[12px] font-semibold px-4 py-1.5 border transition-all cursor-pointer ${
+                  activeStudentFilter === null
+                    ? "bg-ink text-paper border-ink"
+                    : "bg-transparent text-foreground/60 border-grid hover:border-foreground/30"
+                }`}
+              >
+                הכל ({gallery.length})
+              </button>
+              {students.map((student) => {
+                const count = gallery.filter((g) => g.studentName === student.name).length;
+                return (
+                  <button
+                    key={student.id}
+                    onClick={() =>
+                      setActiveStudentFilter(
+                        activeStudentFilter === student.id ? null : student.id
+                      )
+                    }
+                    className={`text-[12px] font-semibold px-4 py-1.5 border transition-all cursor-pointer flex items-center gap-1.5 ${
+                      activeStudentFilter === student.id
+                        ? "bg-ink text-paper border-ink"
+                        : "bg-transparent text-foreground/60 border-grid hover:border-foreground/30"
+                    }`}
+                  >
+                    <User className="w-3 h-3" />
+                    {student.name}
+                    <span className="text-[10px] opacity-60">({count})</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Upload Section */}
         <div className="bg-paper border border-grid p-5">
           <div className="flex items-center gap-3 mb-4">
             <p className="label-mono text-foreground/50">הגלריה — העלה עבודה</p>
             <span className="h-px flex-1 bg-grid block" />
           </div>
 
+          {/* Student selector for submission */}
+          {students.length > 0 && (
+            <div className="mb-4" dir="rtl">
+              <label className="text-[12px] font-bold text-foreground/50 mb-1.5 block tracking-[0.05em]">
+                בחר סטודנט
+              </label>
+              <select
+                value={selectedStudentId ?? ""}
+                onChange={(e) => setSelectedStudentId(Number(e.target.value) || null)}
+                className="bg-background border border-grid px-3 py-2 text-[14px] text-foreground transition-colors focus:outline-none focus:border-gold w-full max-w-[300px]"
+              >
+                <option value="">— בחר סטודנט —</option>
+                {students.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {students.length === 0 && (
+            <div className="mb-4 p-4 border border-dashed border-gold/30 text-center text-[13px] text-foreground/40">
+              הוסף סטודנט למעלה כדי להתחיל להעלות עבודות
+            </div>
+          )}
+
           <div className="flex gap-4 flex-col md:flex-row">
-            {/* Upload zone with paste & drag support */}
             <div
               ref={dropZoneRef}
               className="border border-dashed border-grid p-4 text-center cursor-pointer transition-all hover:border-gold hover:bg-gold/[0.04] flex-1 min-w-[180px] relative"
@@ -187,7 +308,8 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
               />
               <button
                 onClick={handleSubmit}
-                className="self-start text-[12px] font-bold tracking-[0.1em] uppercase px-6 py-2.5 bg-ink text-paper border-none cursor-pointer transition-all hover:bg-gold hover:text-ink flex items-center gap-2"
+                disabled={!selectedStudentId || (!caption && !selectedFile)}
+                className="self-start text-[12px] font-bold tracking-[0.1em] uppercase px-6 py-2.5 bg-ink text-paper border-none cursor-pointer transition-all hover:bg-gold hover:text-ink flex items-center gap-2 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-ink disabled:hover:text-paper"
               >
                 <Send className="w-3 h-3" />
                 הגש לגלריה
@@ -196,13 +318,15 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
           </div>
 
           {/* Gallery Grid */}
-          {gallery.length === 0 ? (
+          {filteredGallery.length === 0 ? (
             <div className="mt-4 p-6 text-center text-[12px] text-foreground/35 tracking-[0.08em] border-t border-grid font-medium">
-              עדיין אין עבודות — היה הראשון
+              {activeStudentFilter
+                ? "אין עבודות לסטודנט זה"
+                : "עדיין אין עבודות — היה הראשון"}
             </div>
           ) : (
             <div className="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-[2px] bg-grid mt-4">
-              {gallery.map((item) => (
+              {filteredGallery.map((item) => (
                 <div key={item.id} className="bg-paper overflow-hidden">
                   {item.imageUrl ? (
                     <img
@@ -216,12 +340,14 @@ const ExerciseSection = ({ lessonId }: ExerciseSectionProps) => {
                       ללא תמונה
                     </div>
                   )}
-                  {item.caption && (
-                    <div className="p-2.5 text-[11px] leading-[1.4] text-foreground/60">
-                      <strong className="block text-[11px] font-semibold text-foreground mb-0.5">{item.date}</strong>
-                      {item.caption}
+                  <div className="p-2.5 text-[11px] leading-[1.4] text-foreground/60">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <User className="w-3 h-3 text-gold" />
+                      <strong className="text-[12px] font-bold text-foreground">{item.studentName}</strong>
+                      <span className="text-[10px] text-foreground/40 mr-auto">{item.date}</span>
                     </div>
-                  )}
+                    {item.caption && <p>{item.caption}</p>}
+                  </div>
                 </div>
               ))}
             </div>
