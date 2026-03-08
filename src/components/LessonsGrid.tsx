@@ -56,6 +56,15 @@ const lessons: Lesson[] = [
     tags: ["AI", "Precision", "Inspiration"],
     locked: false,
   },
+  {
+    id: 7,
+    number: "שיעור 07",
+    title: "מעבר לשאלה הנכונה<br>חשיבה עם AI",
+    description: "איך לחשוב מעבר לשאלה הנכונה — שיטות לעבודה עמוקה עם AI.",
+    meta: "14 שקפים · 45 דק׳",
+    tags: ["Thinking", "Questions", "AI"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
