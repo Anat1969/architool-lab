@@ -1,5 +1,6 @@
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { Upload, Send, X, Clipboard, UserPlus, User, Pencil } from "lucide-react";
+import { getExerciseData } from "@/data/exerciseData";
 
 interface ExerciseSectionProps {
   lessonId: number;
