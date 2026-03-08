@@ -18,11 +18,48 @@ const pages = [
   page8, page9, page10, page11, page12, page13, page14,
 ];
 
+// Slides 2-14 are mirrored from the source PDF extraction
+const mirroredSlides = new Set([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+
+const Slide = ({ src, index }: { src: string; index: number }) => {
+  const isMirrored = mirroredSlides.has(index + 1);
+  return (
+    <div className="w-full h-full flex items-center justify-center" dir="ltr">
+      <div className="relative inline-block max-w-full max-h-full">
+        <img
+          src={src}
+          alt={`שקף ${index + 1}`}
+          className="max-w-full max-h-full block"
+          style={isMirrored ? { transform: "scaleX(-1)" } : undefined}
+        />
+        {/* Cover NotebookLM logo at bottom-right of image */}
+        <div
+          className="absolute z-20"
+          style={{
+            bottom: "1%",
+            right: "1%",
+            width: "13%",
+            height: "5%",
+            backgroundColor: "hsl(38 38% 93%)",
+          }}
+        />
+        {/* Cover NotebookLM logo at top-left (some slides have it there) */}
+        <div
+          className="absolute z-20"
+          style={{
+            top: "1%",
+            left: "1%",
+            width: "13%",
+            height: "5%",
+            backgroundColor: "hsl(38 38% 93%)",
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
 export const lesson06Slides = pages.map((src, i) => ({
   id: i + 1,
-  content: (
-    <div className="w-full h-full flex items-center justify-center">
-      <img src={src} alt={`שקף ${i + 1}`} className="w-full h-full object-contain" />
-    </div>
-  ),
+  content: <Slide src={src} index={i} />,
 }));
