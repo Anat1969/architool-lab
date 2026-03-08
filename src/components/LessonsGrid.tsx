@@ -112,6 +112,15 @@ const lessons: Lesson[] = [
     tags: ["NotebookLM", "Research"],
     locked: false,
   },
+  {
+    id: 13,
+    number: "שיעור 13",
+    title: "סיכום ומבט קדימה<br>AI לאדריכלים",
+    description: "סיכום הקורס ומבט על העתיד של AI בתכנון.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["Summary", "Future"],
+    locked: false,
+  },
 ];
 
 interface LessonsGridProps {
