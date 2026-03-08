@@ -37,7 +37,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
       {/* Top accent bar */}
       <div className={`h-[3px] w-full ${isActive ? "bg-gold" : "bg-transparent group-hover:bg-gold/40"} transition-colors`} />
 
-      <div className="p-4 pb-3">
+      <div className="p-5 pb-4">
         {lesson.locked && (
           <Lock className="absolute top-4 start-4 w-3.5 h-3.5 opacity-30" />
         )}
