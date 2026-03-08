@@ -1,4 +1,4 @@
-import { Lock } from "lucide-react";
+import { Lock, Play } from "lucide-react";
 
 interface Lesson {
   id: number;
@@ -24,42 +24,48 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
   return (
     <div
       className={`
-        bg-paper p-10 relative overflow-hidden transition-all duration-300 cursor-pointer
-        min-w-[320px] w-[320px] flex-shrink-0 group
-        ${isActive ? "!bg-ink !text-paper" : ""}
-        ${lesson.locked ? "opacity-45 !cursor-default" : ""}
-        ${!lesson.locked && !isActive ? "hover:bg-warm-mid" : ""}
+        relative overflow-hidden transition-all duration-200 cursor-pointer
+        min-w-[200px] w-[200px] flex-shrink-0 group
+        ${isActive
+          ? "bg-ink text-paper shadow-lg scale-[1.03] z-10"
+          : "bg-paper hover:bg-warm-mid"
+        }
+        ${lesson.locked ? "opacity-40 !cursor-default" : ""}
       `}
       onClick={handleClick}
     >
-      {lesson.locked && (
-        <Lock className="absolute top-9 start-9 w-4 h-4 opacity-30" />
-      )}
+      {/* Top accent bar */}
+      <div className={`h-[3px] w-full ${isActive ? "bg-gold" : "bg-transparent group-hover:bg-gold/40"} transition-colors`} />
 
-      <p className={`font-mono text-[13px] tracking-[0.3em] mb-4 font-bold ${isActive ? "text-gold" : "text-gold"}`}>
-        {lesson.number}
-      </p>
+      <div className="p-4 pb-3">
+        {lesson.locked && (
+          <Lock className="absolute top-4 start-4 w-3.5 h-3.5 opacity-30" />
+        )}
 
-      <h2
-        className="font-display text-[32px] font-bold leading-[1.15] mb-3 text-foreground"
-        dangerouslySetInnerHTML={{ __html: lesson.title }}
-      />
+        {/* Lesson number */}
+        <p className={`font-mono text-[10px] tracking-[0.25em] mb-2 font-bold text-gold`}>
+          {lesson.number}
+        </p>
 
-      <p className={`text-[15px] leading-[1.7] mb-6 ${isActive ? "text-paper/80" : "text-foreground/70"}`}>
-        {lesson.description}
-      </p>
+        {/* Title */}
+        <h2
+          className={`font-display text-[17px] font-bold leading-[1.2] mb-2 ${isActive ? "text-paper" : "text-foreground"}`}
+          dangerouslySetInnerHTML={{ __html: lesson.title }}
+        />
 
-      <div className="flex justify-between items-center">
-        <span className={`font-mono text-[12px] tracking-[0.15em] font-medium ${isActive ? "text-paper/60" : "text-foreground/50"}`}>
+        {/* Meta */}
+        <span className={`font-mono text-[9px] tracking-[0.15em] ${isActive ? "text-paper/50" : "text-foreground/40"}`}>
           {lesson.meta}
         </span>
+
+        {/* Tags */}
         {lesson.tags.length > 0 && (
-          <div className="flex gap-1.5">
+          <div className="flex gap-1 mt-2 flex-wrap">
             {lesson.tags.map((tag) => (
               <span
                 key={tag}
-                className={`font-mono text-[11px] tracking-[0.15em] uppercase px-2.5 py-1 border font-medium ${
-                  isActive ? "border-paper/30 text-paper/70" : "border-grid text-foreground/60"
+                className={`font-mono text-[8px] tracking-[0.1em] uppercase px-1.5 py-0.5 border ${
+                  isActive ? "border-paper/20 text-paper/50" : "border-grid text-foreground/40"
                 }`}
               >
                 {tag}
@@ -69,14 +75,15 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         )}
       </div>
 
+      {/* Action button - always visible when active, hover reveal otherwise */}
       {!lesson.locked && (
         <button
           className={`
-            mt-6 font-mono text-[13px] tracking-[0.2em] uppercase bg-gold text-ink border-none cursor-pointer font-bold
-            transition-all duration-300 overflow-hidden
+            w-full font-mono text-[11px] tracking-[0.15em] uppercase cursor-pointer font-bold
+            flex items-center justify-center gap-2 transition-all duration-200
             ${isActive
-              ? "px-5 py-2.5 max-h-12 opacity-100"
-              : "px-5 py-0 max-h-0 opacity-0 group-hover:py-2.5 group-hover:max-h-12 group-hover:opacity-100"
+              ? "bg-gold text-ink py-2.5"
+              : "bg-gold/0 text-gold py-0 max-h-0 opacity-0 group-hover:bg-gold group-hover:text-ink group-hover:py-2.5 group-hover:max-h-12 group-hover:opacity-100 overflow-hidden"
             }
           `}
           onClick={(e) => {
@@ -84,7 +91,8 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
             onClick(lesson.id);
           }}
         >
-          פתח שיעור ←
+          <Play className="w-3 h-3 fill-current" />
+          פתח שיעור
         </button>
       )}
     </div>
