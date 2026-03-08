@@ -16,9 +16,9 @@ const lessons: Lesson[] = [
     number: "שיעור 02",
     title: "ממשקים<br>Revit API + AI",
     description: "חיבור כלי AI לסביבת העבודה האדריכלית שלך.",
-    meta: "בקרוב",
-    tags: [],
-    locked: true,
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Revit", "API"],
+    locked: false,
   },
   {
     id: 3,

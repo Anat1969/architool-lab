@@ -304,7 +304,7 @@ const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
         <div className="w-full h-full p-[6%_7%] relative bg-paper flex flex-col">
           {slides[currentSlide].content}
           <span className="absolute bottom-[3%] start-[4%] font-mono text-[clamp(8px,0.8vw,10px)] text-foreground/20 tracking-[0.1em]">
-            BLUEPRINT.AI — שיעור 01
+            BLUEPRINT.AI — שיעור 0{lessonId}
           </span>
         </div>
       </div>
