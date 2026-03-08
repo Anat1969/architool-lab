@@ -43,11 +43,11 @@ const lessons: Lesson[] = [
   {
     id: 5,
     number: "שיעור 05",
-    title: "בקרוב",
-    description: "שיעור זה יפורסם בקרוב.",
-    meta: "—",
-    tags: [],
-    locked: true,
+    title: "NotebookLM<br>כלי AI למחקר",
+    description: "שימוש ב-NotebookLM ככלי מחקר מתקדם לאדריכלים.",
+    meta: "14 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Research"],
+    locked: false,
   },
   {
     id: 6,
