@@ -249,7 +249,7 @@ interface SlideViewerProps {
 
 const SlideViewer = ({ lessonId, onClose }: SlideViewerProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slides = lessonId === 1 ? lesson01Slides : [];
+  const slides = lessonId === 1 ? lesson01Slides : lessonId === 2 ? lesson02Slides : [];
   const total = slides.length;
 
   const goTo = useCallback((index: number) => {
