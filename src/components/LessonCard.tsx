@@ -49,7 +49,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
 
         {/* Title */}
         <h2
-          className={`font-display text-[17px] font-bold leading-[1.2] mb-2 ${isActive ? "text-paper" : "text-foreground"}`}
+          className={`font-display text-[22px] font-bold leading-[1.2] mb-3 ${isActive ? "text-paper" : "text-foreground"}`}
           dangerouslySetInnerHTML={{ __html: lesson.title }}
         />
 
