@@ -36,7 +36,7 @@ const LessonCard = ({ lesson, isActive, onClick }: LessonCardProps) => {
         <Lock className="absolute top-9 start-9 w-4 h-4 opacity-30" />
       )}
 
-      <p className={`font-mono text-[10px] tracking-[0.3em] mb-5 ${isActive ? "text-gold" : "text-gold"}`}>
+      <p className={`font-mono text-[13px] tracking-[0.3em] mb-4 font-bold ${isActive ? "text-gold" : "text-gold"}`}>
         {lesson.number}
       </p>
 
