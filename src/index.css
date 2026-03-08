@@ -49,11 +49,11 @@
     --sidebar-ring: var(--gold);
 
     /* Custom tokens */
-    --font-display: 'Frank Ruhl Libre', serif;
-    --font-mono: 'Space Mono', monospace;
-    --font-body: 'Heebo', sans-serif;
-    --text-muted-alpha: rgba(26, 23, 20, 0.45);
-    --text-body-alpha: rgba(26, 23, 20, 0.65);
+    --font-display: 'Rubik', sans-serif;
+    --font-mono: 'Rubik', sans-serif;
+    --font-body: 'Rubik', sans-serif;
+    --text-muted-alpha: rgba(26, 23, 20, 0.5);
+    --text-body-alpha: rgba(26, 23, 20, 0.75);
   }
 
   .dark {
