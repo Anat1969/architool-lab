@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["'Frank Ruhl Libre'", "serif"],
-        mono: ["'Space Mono'", "monospace"],
-        body: ["'Heebo'", "sans-serif"],
+        display: ["'Noto Serif Hebrew'", "serif"],
+        mono: ["'IBM Plex Mono'", "monospace"],
+        body: ["'Rubik'", "sans-serif"],
+        sans: ["'Rubik'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
