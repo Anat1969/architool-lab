@@ -23,11 +23,11 @@ const lessons: Lesson[] = [
   {
     id: 3,
     number: "שיעור 03",
-    title: "ראייה ממוחשבת<br>קריאת תכניות",
-    description: "AI שמבין תכניות קומה ומזהה אלמנטים אדריכליים.",
-    meta: "בקרוב",
-    tags: [],
-    locked: true,
+    title: "כלי, שותף, בקרה<br>NotebookLM",
+    description: "איך להפוך את NotebookLM לשותף מחקר אמיתי — כלי, שותף ובקרה.",
+    meta: "15 שקפים · 45 דק׳",
+    tags: ["NotebookLM", "Research", "Control"],
+    locked: false,
   },
 ];
 
